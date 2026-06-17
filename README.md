@@ -1,4 +1,4 @@
-# 🚀 ODRS TEAM!
+# 🚀 ODRS TEAM
 
 ### One Day. One Revolution. One Solution.
 
