@@ -50,8 +50,9 @@ body{
     min-width: 200px;
 }
 
-.profile-menu:hover .dropdown{
-    display:block;
+/* Controlled entirely by JavaScript now */
+.dropdown.show {
+    display: block;
 }
 
 .dropdown p {
