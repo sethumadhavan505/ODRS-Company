@@ -76,80 +76,96 @@
     <div class="right-panel">
         <h2>Our Offers</h2>
 
-        <div class="accordion">
-          <div class="accordion-item">
-            <button class="accordion-btn">
-              Skillrack Program <span class="icon">▼</span>
-            </button>
-            <div class="panel">
-              <p>500 Program - ₹800 (In single day)</p>
-              <p>If custom program contact us</p>
+        <div class="offers-grid">
+
+          <div class="flip-card" onclick="this.classList.toggle('flipped')">
+            <div class="flip-card-inner">
+              <div class="flip-card-front">
+                <img src="Skillrack count.jpg" alt="SkillRack Count">
+              </div>
+              <div class="flip-card-back">
+                <h3>SkillRack Program Count</h3>
+                <div class="price-tag">₹800</div>
+                <p>500 Programs finished in a single day.</p>
+                <small>Contact us for custom targets</small>
+              </div>
             </div>
           </div>
 
-          <div class="accordion-item">
-            <button class="accordion-btn">
-              Manual Writing <span class="icon">▼</span>
-            </button>
-            <div class="panel">
-              <p>One Manual - ₹500 (In single day)</p>
+          <div class="flip-card" onclick="this.classList.toggle('flipped')">
+            <div class="flip-card-inner">
+              <div class="flip-card-front">
+                <img src="Manual writing.jpg" alt="Manual Writing">
+              </div>
+              <div class="flip-card-back">
+                <h3>Manual Writing</h3>
+                <div class="price-tag">₹500</div>
+                <p>One full manual written clearly & accurately.</p>
+                <small>Delivered in a single day</small>
+              </div>
             </div>
           </div>
 
-          <div class="accordion-item">
-            <button class="accordion-btn">
-              Record Works <span class="icon">▼</span>
-            </button>
-            <div class="panel">
-              <p>One Record - ₹300 - ₹400 (In single day)</p>
+          <div class="flip-card" onclick="this.classList.toggle('flipped')">
+            <div class="flip-card-inner">
+              <div class="flip-card-front">
+                <img src="Record work.jpg" alt="Record Works">
+              </div>
+              <div class="flip-card-back">
+                <h3>Record Works</h3>
+                <div class="price-tag">₹300 - ₹400</div>
+                <p>Complete record writing including diagrams.</p>
+                <small>Delivered in a single day</small>
+              </div>
             </div>
           </div>
 
-          <div class="accordion-item">
-            <button class="accordion-btn">
-              Online Certifications <span class="icon">▼</span>
-            </button>
-            <div class="panel">
-              <p>Per one certificate - ₹100</p>
+          <div class="flip-card" onclick="this.classList.toggle('flipped')">
+            <div class="flip-card-inner">
+              <div class="flip-card-front">
+                <img src="Online Certificate.jpg" alt="Online Certifications">
+              </div>
+              <div class="flip-card-back">
+                <h3>Online Certifications</h3>
+                <div class="price-tag">₹100</div>
+                <p>Per single verified certificate completion.</p>
+                <small>Fast turnaround time</small>
+              </div>
             </div>
           </div>
 
-          <div class="accordion-item">
-            <button class="accordion-btn">
-              Project Works <span class="icon">▼</span>
-            </button>
-            <div class="panel">
-              <p>Depends on work</p>
-              <p>Per project - ₹150 - ₹300</p>
+          <div class="flip-card" onclick="this.classList.toggle('flipped')">
+            <div class="flip-card-inner">
+              <div class="flip-card-front">
+                <img src="Project work.jpg" alt="Project Works">
+              </div>
+              <div class="flip-card-back">
+                <h3>Project Works</h3>
+                <div class="price-tag">₹150 - ₹300</div>
+                <p>Custom tailored mini & major project source code.</p>
+                <small>Price depends on scope</small>
+              </div>
             </div>
           </div>
 
-          <div class="accordion-item">
-            <button class="accordion-btn">
-              Skillrack Test <span class="icon">▼</span>
-            </button>
-            <div class="panel">
-              <p>Per one test - ₹50</p>
+          <div class="flip-card" onclick="this.classList.toggle('flipped')">
+            <div class="flip-card-inner">
+              <div class="flip-card-front">
+                <img src="Skillrack test.jpg" alt="SkillRack Test">
+              </div>
+              <div class="flip-card-back">
+                <h3>SkillRack Test</h3>
+                <div class="price-tag">₹50</div>
+                <p>Per single assessment or coding quiz cleared.</p>
+                <small>High score guaranteed</small>
+              </div>
             </div>
           </div>
+
         </div>
+
     </div>
 </div>
-
-<script>
-const items = document.querySelectorAll(".accordion-item");
-items.forEach(item => {
-  const btn = item.querySelector(".accordion-btn");
-  btn.addEventListener("click", () => {
-    if (item.classList.contains("active")) {
-      item.classList.remove("active");
-    } else {
-      items.forEach(i => i.classList.remove("active"));
-      item.classList.add("active");
-    }
-  });
-});
-</script>    
 
 <script>
 if (!localStorage.getItem("username")) {
@@ -179,27 +195,26 @@ function logout() {
     overlay.classList.remove('show');
   });
 </script>
-    
-</body>
-</html>
+
 <script>
   const darkModeCheckbox = document.getElementById('dark-mode-checkbox');
   const pageBody = document.body;
 
-  // 1. Check browser memory: Did they leave Dark Mode turned ON last time?
   if (localStorage.getItem('odrs_theme') === 'dark') {
     pageBody.classList.add('dark-mode');
-    darkModeCheckbox.checked = true; // Forces the ball to start on the right
+    darkModeCheckbox.checked = true; 
   }
 
-  // 2. Listen to the user clicking the toggle
   darkModeCheckbox.addEventListener('change', () => {
     if (darkModeCheckbox.checked) {
       pageBody.classList.add('dark-mode');
-      localStorage.setItem('odrs_theme', 'dark'); // Save to memory
+      localStorage.setItem('odrs_theme', 'dark'); 
     } else {
       pageBody.classList.remove('dark-mode');
-      localStorage.setItem('odrs_theme', 'light'); // Save to memory
+      localStorage.setItem('odrs_theme', 'light'); 
     }
   });
 </script>
+    
+</body>
+</html>
