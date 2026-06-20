@@ -215,5 +215,23 @@ function logout() {
   });
 </script>
     
+<script>
+  const profileMenu = document.querySelector('.profile-menu');
+  const profileDropdown = document.querySelector('.dropdown');
+
+  profileMenu.addEventListener('click', (event) => {
+    // If the user clicks inside the open white box (like trying to copy their email), don't close it!
+    if (profileDropdown.contains(event.target)) return;
+
+    event.stopPropagation(); // Stops the click from instantly hitting the window trap below
+    profileDropdown.classList.toggle('show');
+  });
+
+  // THE WINDOW TRAP: If they click anywhere else on the background, shut the box.
+  window.addEventListener('click', () => {
+    profileDropdown.classList.remove('show');
+  });
+</script>
+    
 </body>
 </html>
