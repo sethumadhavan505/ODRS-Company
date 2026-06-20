@@ -73,15 +73,15 @@ body{
     font-weight: bold;
 }
 
-/* MAIN DASHBOARD LAYOUT (Fixed Sidebar Math) */
+/* MAIN DASHBOARD LAYOUT */
 .container{
     display:flex;
     min-height: calc(100vh - 70px);
 }
 
 .left-panel{
-    width: 260px;       /* Locked fixed width matching Expense Tracker */
-    flex-shrink: 0;     /* Forbids shrinking */
+    width: 260px;       
+    flex-shrink: 0;     
     background:#1e293b;
     color:white;
     padding: 30px 20px;
@@ -91,7 +91,7 @@ body{
 
 .right-panel{
     flex-grow: 1;
-    width: calc(100% - 260px); /* Absorbs all leftover screen space */
+    width: calc(100% - 260px); 
     padding:40px;
 }
 
@@ -105,54 +105,102 @@ body{
     border-radius:6px;
 }
 
-/* ACCORDION */
-.accordion-item {
-  background: #ffffff;
-  border-radius: 12px;
-  margin-bottom: 12px;
-  overflow: hidden;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+/* ==========================================
+   NEW: 3D FLIP-CARD OFFERS GRID
+========================================== */
+
+.offers-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 25px;
 }
 
-.accordion-btn {
-  width: 100%;
-  padding: 16px;
-  background: linear-gradient(135deg, #219ebc, #0077b6);
-  color: white;
-  border: none;
-  font-size: 16px;
-  text-align: left;
+.flip-card {
+  background-color: transparent;
+  height: 220px; 
+  perspective: 1000px;
   cursor: pointer;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
 }
 
-.panel {
-  max-height: 0;
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.6s cubic-bezier(0.4, 0.2, 0.2, 1);
+  transform-style: preserve-3d;
+  border-radius: 16px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.flip-card.flipped .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+.flip-card-front, 
+.flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden; 
+  backface-visibility: hidden;
+  border-radius: 16px;
   overflow: hidden;
-  background: #f9f9f9;
-  padding: 0 16px;
-  transition: max-height 0.4s ease, padding 0.3s ease;
 }
 
-.panel p {
-  color: #333;
-  margin: 8px 0;
+.flip-card-front {
+  background-color: #fff;
 }
 
-.accordion-item.active .panel {
-  max-height: 300px;
-  padding: 12px 16px;
+.flip-card-front img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; 
+  object-position: center;
 }
 
-.icon {
-  transition: transform 0.3s;
+.flip-card-back {
+  background: linear-gradient(135deg, #1e293b, #0f172a);
+  color: white;
+  transform: rotateY(180deg); 
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  border: 2px solid #0ea5e9;
 }
 
-.accordion-item.active .icon {
-  transform: rotate(180deg);
+.flip-card-back h3 {
+  font-size: 18px;
+  color: #f8fafc;
+  margin-bottom: 8px;
 }
+
+.price-tag {
+  background: rgba(14, 165, 233, 0.2);
+  color: #38bdf8;
+  font-size: 22px;
+  font-weight: 800;
+  padding: 4px 16px;
+  border-radius: 20px;
+  border: 1px solid rgba(56, 189, 248, 0.4);
+  margin-bottom: 10px;
+}
+
+.flip-card-back p {
+  font-size: 13px;
+  color: #cbd5e1;
+  line-height: 1.4;
+  margin-bottom: 8px;
+}
+
+.flip-card-back small {
+  font-size: 11px;
+  color: #94a3b8;
+  font-style: italic;
+}
+
 
 /* CONTACT US SIDEBAR STYLE */
 .left-panel ul {
@@ -251,7 +299,7 @@ body{
 .header-right-side {
     display: flex;
     align-items: center;
-    gap: 25px; /* Spaces the toggle 25px away from the profile icon */
+    gap: 25px; 
 }
 
 .theme-switch-container {
@@ -262,7 +310,6 @@ body{
     font-size: 18px;
 }
 
-/* The Switch Shell */
 .switch {
   position: relative;
   display: inline-block;
@@ -270,14 +317,12 @@ body{
   height: 24px;
 }
 
-/* Hide default HTML checkbox */
 .switch input { 
   opacity: 0;
   width: 0;
   height: 0;
 }
 
-/* The Grey Track */
 .slider {
   position: absolute;
   cursor: pointer;
@@ -287,7 +332,6 @@ body{
   border-radius: 24px;
 }
 
-/* The White Ball (Starts on the Left) */
 .slider:before {
   position: absolute;
   content: "";
@@ -301,23 +345,21 @@ body{
   box-shadow: 0 2px 4px rgba(0,0,0,0.2);
 }
 
-/* When clicked -> Track turns ODRS Blue */
 input:checked + .slider {
   background-color: #0ea5e9; 
 }
 
-/* When clicked -> Ball slides 24px to the Right! */
 input:checked + .slider:before {
   transform: translateX(24px);
 }
 
 
 /* ==========================================
-   2. THE "DARK MODE" COLOR PALETTE
+   2. UPDATED "DARK MODE" COLOR PALETTE
 ========================================== */
 
 body.dark-mode {
-    background-color: #0f172a; /* Deep Slate */
+    background-color: #0f172a; 
 }
 
 body.dark-mode .top-bar {
@@ -329,17 +371,13 @@ body.dark-mode .right-panel h2 {
     color: #f8fafc;
 }
 
-body.dark-mode .accordion-item {
+/* In Dark mode, give the cards a faint cyan neon glow so they jump off the dark slate */
+body.dark-mode .flip-card-inner {
+    box-shadow: 0 4px 20px rgba(14, 165, 233, 0.15);
+}
+
+body.dark-mode .flip-card-front {
     background-color: #1e293b;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.4);
-}
-
-body.dark-mode .panel {
-    background-color: #0f172a;
-}
-
-body.dark-mode .panel p {
-    color: #cbd5e1;
 }
 
 body.dark-mode .menu-toggle-btn {
@@ -356,5 +394,5 @@ body.dark-mode .dropdown p {
 }
 
 body.dark-mode .theme-switch-container {
-    color: #38bdf8; /* Moon icon lights up neon blue */
+    color: #38bdf8; 
 }
