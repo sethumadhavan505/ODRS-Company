@@ -182,3 +182,24 @@ function logout() {
     
 </body>
 </html>
+<script>
+  const darkModeCheckbox = document.getElementById('dark-mode-checkbox');
+  const pageBody = document.body;
+
+  // 1. Check browser memory: Did they leave Dark Mode turned ON last time?
+  if (localStorage.getItem('odrs_theme') === 'dark') {
+    pageBody.classList.add('dark-mode');
+    darkModeCheckbox.checked = true; // Forces the ball to start on the right
+  }
+
+  // 2. Listen to the user clicking the toggle
+  darkModeCheckbox.addEventListener('change', () => {
+    if (darkModeCheckbox.checked) {
+      pageBody.classList.add('dark-mode');
+      localStorage.setItem('odrs_theme', 'dark'); // Save to memory
+    } else {
+      pageBody.classList.remove('dark-mode');
+      localStorage.setItem('odrs_theme', 'light'); // Save to memory
+    }
+  });
+</script>
