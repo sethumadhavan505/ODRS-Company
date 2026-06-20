@@ -20,13 +20,25 @@
         </div>
     </div>
 
-    <div class="profile-menu">
-        <i class="fa-solid fa-user"></i>
-        <div class="dropdown">
-            <p>Name: <span id="userName"></span></p>
-            <p>Email: <span id="userEmail"></span></p>
-            <a href="index.html" onclick="logout()">Sign Out</a>
+    <div class="header-right-side">
+        
+        <div class="theme-switch-container">
+            <i class="fa-solid fa-moon"></i>
+            <label class="switch">
+                <input type="checkbox" id="dark-mode-checkbox">
+                <span class="slider round"></span>
+            </label>
         </div>
+
+        <div class="profile-menu">
+            <i class="fa-solid fa-user"></i>
+            <div class="dropdown">
+                <p>Name: <span id="userName"></span></p>
+                <p>Email: <span id="userEmail"></span></p>
+                <a href="index.html" onclick="logout()">Sign Out</a>
+            </div>
+        </div>
+
     </div>
 </header>
 
