@@ -1,18 +1,23 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>ODRS TEAM - Home</title>
 <link rel="stylesheet" href="home.css">
-<link rel="stylesheet"
-href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 
 <body>
 
 <header class="top-bar">
-    <div class="company-logo">
-        <img src="logo.png" alt="Logo">
+    <div class="logo-and-menu">
+        <button id="hamburger-btn" class="menu-toggle-btn">
+            <i class="fa-solid fa-bars"></i>
+        </button>
+        <div class="company-logo">
+            <img src="logo.png" alt="Logo">
+        </div>
     </div>
 
     <div class="profile-menu">
@@ -25,139 +30,142 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
     </div>
 </header>
 
+<div id="mobile-overlay" class="overlay-shadow"></div>
+
 <div class="container">
 
-    <div class="left-panel">
+    <div id="odrs-sidebar" class="left-panel">
         <h2>Contact Us</h2>
 
         <ul>
- <li>
-    <a href="https://sethumadhavan505.github.io/CONTACT-FORM/">
-       <i class="fa-solid fa-envelope"></i> Email ID
-    </a>
- </li>
-
-  <li>
-    <a href="https://www.instagram.com/odrs._.company._?igsh=Y2Nidmp3eGxqczM2" target="_blank">
-       <i class="fa-brands fa-instagram"></i> Instagram ID
-    </a>
-  </li>
-
-  <li>
-    <a href="https://t.me/Sethumadhavan505" target="_blank">
-      <i class="fa-brands fa-telegram"></i> Telegram
-    </a>
-  </li>
-
-  <li>
-    <a href="https://wa.me/918940833101" target="_blank">
-      <i class="fa-brands fa-whatsapp"></i> WhatsApp
-    </a>
-  </li>
-</ul>
+            <li>
+                <a href="https://sethumadhavan505.github.io/CONTACT-FORM/">
+                   <i class="fa-solid fa-envelope"></i> Email ID
+                </a>
+            </li>
+            <li>
+                <a href="https://www.instagram.com/odrs._.company._?igsh=Y2Nidmp3eGxqczM2" target="_blank">
+                   <i class="fa-brands fa-instagram"></i> Instagram ID
+                </a>
+            </li>
+            <li>
+                <a href="https://t.me/Sethumadhavan505" target="_blank">
+                  <i class="fa-brands fa-telegram"></i> Telegram
+                </a>
+            </li>
+            <li>
+                <a href="https://wa.me/918940833101" target="_blank">
+                  <i class="fa-brands fa-whatsapp"></i> WhatsApp
+                </a>
+            </li>
+        </ul>
     </div>
 
     <div class="right-panel">
-    <h2>Our Offers</h2>
+        <h2>Our Offers</h2>
 
-    <div class="accordion">
+        <div class="accordion">
+          <div class="accordion-item">
+            <button class="accordion-btn">
+              Skillrack Program <span class="icon">▼</span>
+            </button>
+            <div class="panel">
+              <p>500 Program - ₹800 (In single day)</p>
+              <p>If custom program contact us</p>
+            </div>
+          </div>
 
-      <div class="accordion-item">
-        <button class="accordion-btn">
-          Skillrack Program <span class="icon">▼</span>
-        </button>
-        <div class="panel">
-          <p>500 Program - ₹800 (In single day)</p>
-          <p>If custom program contact us</p>
+          <div class="accordion-item">
+            <button class="accordion-btn">
+              Manual <span class="icon">▼</span>
+            </button>
+            <div class="panel">
+              <p>One Manual - ₹500 (In single day)</p>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <button class="accordion-btn">
+              Record Works <span class="icon">▼</span>
+            </button>
+            <div class="panel">
+              <p>One Record - ₹300 - ₹400 (In single day)</p>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <button class="accordion-btn">
+              Online Certifications <span class="icon">▼</span>
+            </button>
+            <div class="panel">
+              <p>Per one certificate - ₹100</p>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <button class="accordion-btn">
+              Project Works <span class="icon">▼</span>
+            </button>
+            <div class="panel">
+              <p>Depends on work</p>
+              <p>Per project - ₹150 - ₹300</p>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <button class="accordion-btn">
+              Skillrack Test <span class="icon">▼</span>
+            </button>
+            <div class="panel">
+              <p>Per one test - ₹50</p>
+            </div>
+          </div>
         </div>
-      </div>
-
-      <div class="accordion-item">
-        <button class="accordion-btn">
-          Manual <span class="icon">▼</span>
-        </button>
-        <div class="panel">
-          <p>One Manual - ₹500 (In single day)</p>
-        </div>
-      </div>
-
-      <div class="accordion-item">
-        <button class="accordion-btn">
-          Record Works <span class="icon">▼</span>
-        </button>
-        <div class="panel">
-          <p>One Record - ₹300 - ₹400 (In single day)</p>
-        </div>
-      </div>
-
-      <div class="accordion-item">
-        <button class="accordion-btn">
-          Online Certifications <span class="icon">▼</span>
-        </button>
-        <div class="panel">
-          <p>Per one certificate - ₹100</p>
-        </div>
-      </div>
-
-      <div class="accordion-item">
-        <button class="accordion-btn">
-          Project Works <span class="icon">▼</span>
-        </button>
-        <div class="panel">
-          <p>Depends on work</p>
-          <p>Per project - ₹150 - ₹300</p>
-        </div>
-      </div>
-
-      <div class="accordion-item">
-        <button class="accordion-btn">
-          Skillrack Test <span class="icon">▼</span>
-        </button>
-        <div class="panel">
-          <p>Per one test - ₹50</p>
-        </div>
-      </div>
-
     </div>
-</div>
 </div>
 
 <script>
 const items = document.querySelectorAll(".accordion-item");
-
 items.forEach(item => {
   const btn = item.querySelector(".accordion-btn");
-
   btn.addEventListener("click", () => {
-
-    // If already open → close it
     if (item.classList.contains("active")) {
       item.classList.remove("active");
     } else {
       items.forEach(i => i.classList.remove("active"));
-      
       item.classList.add("active");
     }
-
   });
 });
 </script>    
 
 <script>
-// Block direct access
 if (!localStorage.getItem("username")) {
   window.location.href = "index.html";
 }
-
-// Show user data
 document.getElementById("userName").textContent = localStorage.getItem("username");
 document.getElementById("userEmail").textContent = localStorage.getItem("email");
 
-// Logout
 function logout() {
   localStorage.removeItem("username");
   localStorage.removeItem("email");
 }
+</script>
+
+<script>
+  const hamburgerBtn = document.getElementById('hamburger-btn');
+  const sidebar = document.getElementById('odrs-sidebar');
+  const overlay = document.getElementById('mobile-overlay');
+
+  hamburgerBtn.addEventListener('click', () => {
+    sidebar.classList.add('open');
+    overlay.classList.add('show');
+  });
+
+  overlay.addEventListener('click', () => {
+    sidebar.classList.remove('open');
+    overlay.classList.remove('show');
+  });
 </script>
     
 </body>
