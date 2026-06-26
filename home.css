@@ -302,6 +302,48 @@ body{
     gap: 25px; 
 }
 
+/* BOOK NOW BUTTON */
+.book-now-btn{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:10px;
+    padding:14px 28px;
+    background:#ffffff;
+    color:#ff4d2d;
+    text-decoration:none;
+    border:2px solid #ff4d2d;
+    border-radius:14px;
+    font-size:16px;
+    font-weight:700;
+    cursor:pointer;
+    transition:all 0.3s ease;
+    box-shadow:0 2px 10px rgba(0,0,0,0.08);
+}
+
+.book-now-btn i{
+    font-size:18px;
+}
+
+.book-now-btn:hover{
+    background:#ff4d2d;
+    color:#ffffff;
+    transform:translateY(-2px);
+    box-shadow:0 8px 20px rgba(255,77,45,0.25);
+}
+
+/* DARK MODE */
+body.dark-mode .book-now-btn{
+    background:#1e293b;
+    color:#ff6b4a;
+    border:2px solid #ff6b4a;
+}
+
+body.dark-mode .book-now-btn:hover{
+    background:#ff6b4a;
+    color:#ffffff;
+}
+
 .theme-switch-container {
     display: flex;
     align-items: center;
