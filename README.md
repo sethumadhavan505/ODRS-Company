@@ -57,13 +57,15 @@ https://sethumadhavan505.github.io/ODRS-Company.github.io/
 
 ## 📞 Contact Us
 
-📧 Email: odrscompany@gmail.com
+📧 **Email:** odrscompany@gmail.com
 
-📷 Instagram: Available on our website
+📧 **Contact Form:**  [Open Contact Form](https://sethumadhavan505.github.io/CONTACT-FORM/)
 
-📨 Telegram: Available on our website
+📷 **Instagram:**  [Follow ODRS on Instagram](https://www.instagram.com/odrs._.company._?igsh=Y2Nidmp3eGxqczM2)
 
-💬 WhatsApp: Contact through website
+📨 **Telegram:**  [Join Telegram](https://t.me/Sethumadhavan505)
+
+💬 **WhatsApp:**  [Chat on WhatsApp](https://wa.me/918940833101)
 
 ---
 
