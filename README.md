@@ -83,3 +83,9 @@ https://sethumadhavan505.github.io/ODRS-Company.github.io/
 **ODRS TEAM**
 
 *"Your Solution in a Single Day."*
+
+---
+
+## 📄 License
+
+This project was developed by **ODRS TEAM** for educational and service purposes and is licensed under the **MIT License**. See the **LICENSE** file for more information.
