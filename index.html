@@ -124,5 +124,30 @@ function login() {
   }
 }
 </script>
+
+<script>
+function showWarning(msg) {
+    alert("⚠️ ODRS SECURITY WARNING\n\n" + msg);
+}
+
+// Right Click
+document.addEventListener("contextmenu", function(e) {
+    e.preventDefault();
+    showWarning("Right Click is disabled on this website.");
+});
+
+// Keyboard Shortcuts
+document.addEventListener("keydown", function(e) {
+    if (
+        e.key === "F12" ||
+        (e.ctrlKey && e.shiftKey && ["I", "J", "C"].includes(e.key.toUpperCase())) ||
+        (e.ctrlKey && e.key.toUpperCase() === "U")
+    ) {
+        e.preventDefault();
+        showWarning("Developer tools and source viewing are disabled.");
+    }
+});
+</script>
+
 </body>
 </html>
