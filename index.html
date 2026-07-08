@@ -125,15 +125,71 @@ function login() {
 }
 </script>
 
+<!-- Warning Popup -->
+<div id="warningPopup" class="warning-popup">
+    <div class="warning-box">
+        <div class="warning-icon">⚠️</div>
+        <h2>ODRS SECURITY WARNING</h2>
+        <p>Unauthorized inspection or source viewing is not allowed.</p>
+        <button onclick="closeWarning()">OK</button>
+    </div>
+</div>
+
+<style>
+.warning-popup{
+    display:none;
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,0.7);
+    justify-content:center;
+    align-items:center;
+    z-index:99999;
+}
+.warning-box{
+    background:#fff;
+    padding:25px;
+    border-radius:15px;
+    text-align:center;
+    width:350px;
+    box-shadow:0 0 25px rgba(0,0,0,0.3);
+}
+.warning-icon{
+    font-size:60px;
+}
+.warning-box h2{
+    color:#e53935;
+    margin:10px 0;
+}
+.warning-box p{
+    color:#555;
+}
+.warning-box button{
+    margin-top:15px;
+    padding:10px 20px;
+    border:none;
+    border-radius:8px;
+    background:#e53935;
+    color:white;
+    cursor:pointer;
+}
+</style>
+
 <script>
-function showWarning(msg) {
-    alert("⚠️ ODRS SECURITY WARNING\n\n" + msg);
+function showWarning() {
+    document.getElementById("warningPopup").style.display = "flex";
+}
+
+function closeWarning() {
+    document.getElementById("warningPopup").style.display = "none";
 }
 
 // Right Click
 document.addEventListener("contextmenu", function(e) {
     e.preventDefault();
-    showWarning("Right Click is disabled on this website.");
+    showWarning();
 });
 
 // Keyboard Shortcuts
@@ -144,7 +200,7 @@ document.addEventListener("keydown", function(e) {
         (e.ctrlKey && e.key.toUpperCase() === "U")
     ) {
         e.preventDefault();
-        showWarning("Developer tools and source viewing are disabled.");
+        showWarning();
     }
 });
 </script>
