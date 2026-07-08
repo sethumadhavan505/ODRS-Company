@@ -5,7 +5,7 @@
 ODRS TEAM is a student-focused service platform dedicated to helping learners complete academic and technical tasks efficiently.
 
 🌐 Live Website:
-https://sethumadhavan505.github.io/ODRS-Company.github.io/
+https://sethumadhavan505.github.io/ODRS-Company/
 
 ---
 
