@@ -46,7 +46,7 @@
             <div class="dropdown">
                 <p>Name: <span id="userName"></span></p>
                 <p>Email: <span id="userEmail"></span></p>
-                <a href="index.html" onclick="logout()">Sign Out</a>
+                <a href="/" onclick="logout()">Sign Out</a>
             </div>
         </div>
 
@@ -179,7 +179,7 @@
 
 <script>
 if (!localStorage.getItem("username")) {
-  window.location.href = "index.html";
+  window.location.href = "/";
 }
 document.getElementById("userName").textContent = localStorage.getItem("username");
 document.getElementById("userEmail").textContent = localStorage.getItem("email");
