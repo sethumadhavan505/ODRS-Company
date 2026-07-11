@@ -89,7 +89,7 @@
 
         <div class="offers-grid">
 
-          <div class="flip-card" onclick="this.classList.toggle('flipped')">
+          <div class="flip-card">
             <div class="flip-card-inner">
               <div class="flip-card-front">
                 <img src="Skillrack count.jpg" alt="SkillRack Count">
@@ -103,7 +103,7 @@
             </div>
           </div>
 
-            <div class="flip-card" onclick="this.classList.toggle('flipped')">
+          <div class="flip-card">
             <div class="flip-card-inner">
               <div class="flip-card-front">
                 <img src="Skillrack test.jpg" alt="SkillRack Test">
@@ -117,7 +117,7 @@
             </div>
           </div>
 
-            <div class="flip-card" onclick="this.classList.toggle('flipped')">
+            <div class="flip-card">
             <div class="flip-card-inner">
               <div class="flip-card-front">
                 <img src="Manual writing.jpg" alt="Manual Writing">
@@ -131,7 +131,7 @@
             </div>
           </div>
 
-            <div class="flip-card" onclick="this.classList.toggle('flipped')">
+           <div class="flip-card">
             <div class="flip-card-inner">
               <div class="flip-card-front">
                 <img src="Online Certificate.jpg" alt="Online Certifications">
@@ -145,7 +145,7 @@
             </div>
           </div>
 
-          <div class="flip-card" onclick="this.classList.toggle('flipped')">
+          <div class="flip-card">
             <div class="flip-card-inner">
               <div class="flip-card-front">
                 <img src="Project work.jpg" alt="Project Works">
@@ -159,7 +159,7 @@
             </div>
           </div>
 
-             <div class="flip-card" onclick="this.classList.toggle('flipped')">
+            <div class="flip-card">
             <div class="flip-card-inner">
               <div class="flip-card-front">
                 <img src="Record work.jpg" alt="Record Works">
@@ -173,7 +173,7 @@
             </div>
           </div>
 
-        <div class="flip-card" onclick="this.classList.toggle('flipped')">
+        <div class="flip-card">
             <div class="flip-card-inner">
               <div class="flip-card-front">
                 <img src="Github Project.jpg" alt="Github Project Works">
@@ -187,7 +187,7 @@
             </div>
           </div>
 
-        <div class="flip-card" onclick="this.classList.toggle('flipped')">
+        <div class="flip-card">
             <div class="flip-card-inner">
               <div class="flip-card-front">
                 <img src="Github Star.jpg" alt="Github 50+ Star">
@@ -201,7 +201,7 @@
             </div>
           </div>
 
-            <div class="flip-card" onclick="this.classList.toggle('flipped')">
+            <div class="flip-card">
             <div class="flip-card-inner">
               <div class="flip-card-front">
                 <img src="Portfolio.jpg" alt="Portfolio Build">
@@ -215,7 +215,7 @@
             </div>
           </div>
 
-        <div class="flip-card" onclick="this.classList.toggle('flipped')">
+        <div class="flip-card">
             <div class="flip-card-inner">
               <div class="flip-card-front">
                 <img src="Resume.jpg" alt="Resume Build">
@@ -229,7 +229,7 @@
             </div>
           </div>
         
-        <div class="flip-card" onclick="this.classList.toggle('flipped')">
+        <div class="flip-card">
             <div class="flip-card-inner">
               <div class="flip-card-front">
                 <img src="Coding ID.jpg" alt="Coding ID sale">
@@ -243,7 +243,7 @@
             </div>
           </div>
             
-        <div class="flip-card" onclick="this.classList.toggle('flipped')">
+        <div class="flip-card">
             <div class="flip-card-inner">
               <div class="flip-card-front">
                 <img src="IEEE Paper.jpg" alt="IEEE Paper Sale">
@@ -408,5 +408,23 @@ document.addEventListener("keydown", function(e) {
     }
 });
 </script>
+
+<script>
+document.querySelectorAll('.flip-card').forEach(card => {
+    card.addEventListener('click', function () {
+
+        // Close all other cards
+        document.querySelectorAll('.flip-card').forEach(otherCard => {
+            if (otherCard !== this) {
+                otherCard.classList.remove('flipped');
+            }
+        });
+
+        // Toggle current card
+        this.classList.toggle('flipped');
+    });
+});
+</script>
+    
 </body>
 </html>
