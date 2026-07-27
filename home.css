@@ -79,15 +79,20 @@ body{
     min-height: calc(100vh - 70px);
 }
 
+
 .left-panel{
-    width: 260px;       
-    flex-shrink: 0;     
+    width:320px;
+    min-width:320px;
+    flex-shrink:0;
     background:#1e293b;
     color:white;
-    padding: 30px 20px;
-    min-height: calc(100vh - 70px);
-    z-index: 999;
+    padding:30px 20px;
+    min-height:calc(100vh - 70px);
+    z-index:999;
+    display:flex;
+    flex-direction:column;
 }
+
 
 .right-panel{
     flex-grow: 1;
@@ -265,14 +270,14 @@ body{
     cursor: pointer;
   }
 
-  .left-panel {
-    position: fixed;
-    top: 0;
-    left: -280px; 
-    width: 260px;
-    height: 100vh;
+  .left-panel{
+    position:fixed;
+    top:0;
+    left:-340px;
+    width:320px;
+    height:100vh;
+    transition:left .3s ease;
     box-shadow: 4px 0 15px rgba(0,0,0,0.5);
-    transition: left 0.3s ease-in-out;
   }
 
   .left-panel.open {
@@ -515,7 +520,8 @@ body.dark-mode .theme-switch-container {
 .profile-card{
     display:flex;
     align-items:center;
-    gap:16px;
+    gap:15px;
+    width:100%;
     background:#214354;
     border-radius:18px;
     padding:18px;
@@ -526,7 +532,7 @@ body.dark-mode .theme-switch-container {
     height:60px;
     min-width:60px;
     border-radius:50%;
-    background:#2f5670;
+    background:#315673;
     display:flex;
     justify-content:center;
     align-items:center;
@@ -541,8 +547,8 @@ body.dark-mode .theme-switch-container {
 
 .profile-info h4{
     margin:0;
-    color:#ffffff;
-    font-size:15px;
+    color:#fff;
+    font-size:16px;
     font-weight:700;
     text-transform:uppercase;
     white-space:nowrap;
@@ -551,9 +557,9 @@ body.dark-mode .theme-switch-container {
 }
 
 .profile-info p{
-    margin-top:6px;
+    margin-top:5px;
     color:#b8c8d6;
-    font-size:12px;
+    font-size:13px;
     white-space:nowrap;
     overflow:hidden;
     text-overflow:ellipsis;
