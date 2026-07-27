@@ -460,12 +460,13 @@ body.dark-mode .theme-switch-container {
 
     /* Show sidebar profile and dark mode */
     .sidebar-profile,
-    .sidebar-darkmode {
-        display: block;
-        margin-top: 20px;
-        padding: 15px;
-        border-top: 1px solid #ddd;
-    }
+    .sidebar-darkmode{
+    display:flex;
+}
+
+.sidebar-bottom{
+    display:block;
+}
 
     .sidebar-profile h3 {
         margin-bottom: 10px;
@@ -487,4 +488,78 @@ body.dark-mode .theme-switch-container {
         justify-content: space-between;
         align-items: center;
     }
+}
+
+/* Sidebar Layout */
+.left-panel{
+    display:flex;
+    flex-direction:column;
+}
+
+/* Dark Mode Section */
+.sidebar-darkmode{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:15px 20px;
+    margin-top:20px;
+}
+
+/* Push Profile Card to Bottom */
+.sidebar-bottom{
+    margin-top:auto;
+    padding:20px;
+}
+
+/* Profile Card */
+.profile-card{
+    display:flex;
+    align-items:center;
+    gap:15px;
+    background:#1d3948;
+    border-radius:15px;
+    padding:15px;
+}
+
+.profile-avatar{
+    width:55px;
+    height:55px;
+    border-radius:50%;
+    background:#294c64;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:24px;
+    color:#4f8cff;
+}
+
+.profile-info h4{
+    margin:0;
+    color:#fff;
+    font-size:16px;
+    font-weight:700;
+    text-transform:uppercase;
+}
+
+.profile-info p{
+    margin-top:5px;
+    color:#9fb3c8;
+    font-size:13px;
+    word-break:break-word;
+}
+
+/* Logout */
+.logout-btn{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    margin-top:18px;
+    color:#ff5a5a;
+    text-decoration:none;
+    font-size:18px;
+    font-weight:600;
+}
+
+.logout-btn:hover{
+    color:#ff2d2d;
 }
