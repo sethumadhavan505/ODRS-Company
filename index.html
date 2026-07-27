@@ -100,36 +100,47 @@
 // REGISTER FUNCTION
 async function register() {
 
-    const username = document.getElementById("regUsername").value.trim();
-    const email = document.getElementById("regEmail").value.trim();
-    const password = document.getElementById("regPassword").value;
+    try {
 
-    const { data, error } = await supabase.auth.signUp({
-        email: email,
-        password: password
-    });
+        alert("Register button clicked");
 
-    if (error) {
-        alert(error.message);
-        return;
-    }
+        const username = document.getElementById("regUsername").value.trim();
+        const email = document.getElementById("regEmail").value.trim();
+        const password = document.getElementById("regPassword").value;
 
-    const user = data.user;
-
-    const { error: profileError } = await supabase
-        .from("profiles")
-        .insert({
-            id: user.id,
-            username: username,
-            email: email
+        const { data, error } = await supabase.auth.signUp({
+            email,
+            password
         });
 
-    if (profileError) {
-        alert(profileError.message);
-        return;
-    }
+        console.log("Signup:", data, error);
 
-    alert("Registration Successful! ✅");
+        if (error) {
+            alert(error.message);
+            return;
+        }
+
+        const { error: profileError } = await supabase
+            .from("profiles")
+            .insert({
+                id: data.user.id,
+                username,
+                email
+            });
+
+        console.log("Profile:", profileError);
+
+        if (profileError) {
+            alert(profileError.message);
+            return;
+        }
+
+        alert("Registration Successful! ✅");
+
+    } catch (err) {
+        console.error(err);
+        alert(err.message);
+    }
 }
 // LOGIN FUNCTION
 async function login() {
