@@ -99,27 +99,42 @@
 <script>
 // REGISTER FUNCTION
 async function register() {
-
     try {
-
-        alert("Register button clicked");
 
         const username = document.getElementById("regUsername").value.trim();
         const email = document.getElementById("regEmail").value.trim();
         const password = document.getElementById("regPassword").value;
 
+        // Validation
+        if (!username || !email || !password) {
+            alert("Please fill all fields.");
+            return;
+        }
+
+        // Check if username already exists
+        const { data: existingUser } = await supabaseClient
+            .from("profiles")
+            .select("username")
+            .eq("username", username)
+            .maybeSingle();
+
+        if (existingUser) {
+            alert("Username already exists ❌");
+            return;
+        }
+
+        // Register with Supabase Authentication
         const { data, error } = await supabaseClient.auth.signUp({
             email,
             password
         });
-
-        console.log("Signup:", data, error);
 
         if (error) {
             alert(error.message);
             return;
         }
 
+        // Save profile
         const { error: profileError } = await supabaseClient
             .from("profiles")
             .insert({
@@ -128,18 +143,21 @@ async function register() {
                 email
             });
 
-        console.log("Profile:", profileError);
-
         if (profileError) {
             alert(profileError.message);
             return;
         }
 
-        alert("Registration Successful! ✅");
+        // Success message
+        if (data.user && data.session) {
+            alert("Registration Successful! ✅");
+        } else {
+            alert("Registration successful! Please verify your email before logging in. 📧");
+        }
 
     } catch (err) {
         console.error(err);
-        alert(err.message);
+        alert("Something went wrong. Please try again.");
     }
 }
 // LOGIN FUNCTION
