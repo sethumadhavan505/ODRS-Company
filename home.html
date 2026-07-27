@@ -326,23 +326,37 @@ function logout() {
 </script>
 
 <script>
-  const darkModeCheckbox = document.getElementById('dark-mode-checkbox');
-  const pageBody = document.body;
+const desktopToggle = document.getElementById("dark-mode-checkbox");
+const mobileToggle = document.getElementById("dark-mode-checkbox-mobile");
 
-  if (localStorage.getItem('odrs_theme') === 'dark') {
-    pageBody.classList.add('dark-mode');
-    darkModeCheckbox.checked = true; 
-  }
+function setTheme(isDark) {
 
-  darkModeCheckbox.addEventListener('change', () => {
-    if (darkModeCheckbox.checked) {
-      pageBody.classList.add('dark-mode');
-      localStorage.setItem('odrs_theme', 'dark'); 
+    if (isDark) {
+        document.body.classList.add("dark-mode");
+        localStorage.setItem("odrs_theme", "dark");
     } else {
-      pageBody.classList.remove('dark-mode');
-      localStorage.setItem('odrs_theme', 'light'); 
+        document.body.classList.remove("dark-mode");
+        localStorage.setItem("odrs_theme", "light");
     }
-  });
+
+    if (desktopToggle) desktopToggle.checked = isDark;
+    if (mobileToggle) mobileToggle.checked = isDark;
+}
+
+const savedTheme = localStorage.getItem("odrs_theme") === "dark";
+setTheme(savedTheme);
+
+if (desktopToggle) {
+    desktopToggle.addEventListener("change", () => {
+        setTheme(desktopToggle.checked);
+    });
+}
+
+if (mobileToggle) {
+    mobileToggle.addEventListener("change", () => {
+        setTheme(mobileToggle.checked);
+    });
+}
 </script>
     
 <script>
