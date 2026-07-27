@@ -20,8 +20,8 @@
             <h2 class="slide-element">Login</h2>
             <form action="#">
                 <div class="field-wrapper slide-element">
-                    <input type="email" id="loginEmail" required>
-                    <label>Email</label>
+                    <input type="text" id="loginUsername" required>
+                    <label>Username</label>
                     <i class="fa-solid fa-user"></i>
                 </div>
 
@@ -145,18 +145,32 @@ async function register() {
 // LOGIN FUNCTION
 async function login() {
 
-    const email = document.getElementById("loginEmail").value.trim();
+    const username = document.getElementById("loginUsername").value.trim();
     const password = document.getElementById("loginPassword").value;
 
-    const { data, error } = await supabase.auth.signInWithPassword({
-        email: email,
+    // Find the email for this username
+    const { data: profile, error: profileError } = await supabase
+        .from("profiles")
+        .select("email")
+        .eq("username", username)
+        .single();
+
+    if (profileError || !profile) {
+        alert("Invalid Username or Password ❌");
+        return;
+    }
+
+    // Login using the email
+    const { error: loginError } = await supabase.auth.signInWithPassword({
+        email: profile.email,
         password: password
     });
 
-    if (error) {
-        alert("Invalid Email or Password ❌");
+    if (loginError) {
+        alert("Invalid Username or Password ❌");
         return;
     }
+
     window.location.href = "/home";
 }
 </script>
