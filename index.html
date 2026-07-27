@@ -97,21 +97,22 @@
     
     
 <script>
+    
 // REGISTER FUNCTION
 async function register() {
+
     try {
 
         const username = document.getElementById("regUsername").value.trim();
-        const email = document.getElementById("regEmail").value.trim();
+        const email = document.getElementById("regEmail").value.trim().toLowerCase();
         const password = document.getElementById("regPassword").value;
 
-        // Validation
         if (!username || !email || !password) {
             alert("Please fill all fields.");
             return;
         }
 
-        // Check if username already exists
+        // Check username already exists
         const { data: existingUser } = await supabaseClient
             .from("profiles")
             .select("username")
@@ -123,7 +124,7 @@ async function register() {
             return;
         }
 
-        // Register with Supabase Authentication
+        // Register in Supabase Auth
         const { data, error } = await supabaseClient.auth.signUp({
             email,
             password
@@ -134,7 +135,7 @@ async function register() {
             return;
         }
 
-        // Save profile
+        // Save user profile
         const { error: profileError } = await supabaseClient
             .from("profiles")
             .insert({
@@ -148,49 +149,66 @@ async function register() {
             return;
         }
 
-        // Success message
-        if (data.user && data.session) {
-            alert("Registration Successful! ✅");
-        } else {
-            alert("Registration successful! Please verify your email before logging in. 📧");
-        }
+        alert("Registration Successful ✅");
+
+        // Clear form
+        document.getElementById("regUsername").value = "";
+        document.getElementById("regEmail").value = "";
+        document.getElementById("regPassword").value = "";
 
     } catch (err) {
         console.error(err);
-        alert("Something went wrong. Please try again.");
+        alert(err.message);
     }
 }
+    
 // LOGIN FUNCTION
 async function login() {
 
-    const username = document.getElementById("loginUsername").value.trim();
-    const password = document.getElementById("loginPassword").value;
+    try {
 
-    // Find email using username
-    const { data: profile, error: profileError } = await supabaseClient
-        .from("profiles")
-        .select("email")
-        .eq("username", username)
-        .single();
+        const username = document.getElementById("loginUsername").value.trim();
+        const password = document.getElementById("loginPassword").value;
 
-    if (profileError || !profile) {
-        alert("Invalid Username or Password ❌");
-        return;
+        if (!username || !password) {
+            alert("Enter Username and Password");
+            return;
+        }
+
+        // Find email using username
+        const { data: profile, error: profileError } = await supabaseClient
+            .from("profiles")
+            .select("email")
+            .eq("username", username)
+            .single();
+
+        if (profileError || !profile) {
+            alert("Invalid Username or Password ❌");
+            return;
+        }
+
+        // Login using email internally
+        const { error: loginError } =
+            await supabaseClient.auth.signInWithPassword({
+                email: profile.email,
+                password
+            });
+
+        if (loginError) {
+            alert("Invalid Username or Password ❌");
+            return;
+        }
+
+        alert("Login Successful ✅");
+
+        window.location.href = "home.html";
+
+    } catch (err) {
+        console.error(err);
+        alert(err.message);
     }
-
-    // Login with the email retrieved above
-    const { error: loginError } = await supabaseClient.auth.signInWithPassword({
-        email: profile.email,
-        password: password
-    });
-
-    if (loginError) {
-        alert("Invalid Username or Password ❌");
-        return;
-    }
-
-    window.location.href = "/home";
 }
+
 </script>
 
 <!-- Warning Popup -->
