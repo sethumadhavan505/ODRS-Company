@@ -108,7 +108,7 @@ async function register() {
         const email = document.getElementById("regEmail").value.trim();
         const password = document.getElementById("regPassword").value;
 
-        const { data, error } = await supabase.auth.signUp({
+        const { data, error } = await supabaseClient.auth.signUp({
             email,
             password
         });
@@ -120,7 +120,7 @@ async function register() {
             return;
         }
 
-        const { error: profileError } = await supabase
+        const { error: profileError } = await supabaseClient
             .from("profiles")
             .insert({
                 id: data.user.id,
@@ -148,8 +148,8 @@ async function login() {
     const username = document.getElementById("loginUsername").value.trim();
     const password = document.getElementById("loginPassword").value;
 
-    // Find the email for this username
-    const { data: profile, error: profileError } = await supabase
+    // Find email using username
+    const { data: profile, error: profileError } = await supabaseClient
         .from("profiles")
         .select("email")
         .eq("username", username)
@@ -160,8 +160,8 @@ async function login() {
         return;
     }
 
-    // Login using the email
-    const { error: loginError } = await supabase.auth.signInWithPassword({
+    // Login with the email retrieved above
+    const { error: loginError } = await supabaseClient.auth.signInWithPassword({
         email: profile.email,
         password: password
     });
