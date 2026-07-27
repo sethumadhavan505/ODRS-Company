@@ -143,11 +143,7 @@ async function login() {
     });
 
     if (error) {
-        if (error.message.includes("already")) {
-            alert("Email already registered!");
-        } else {
-            alert("Registration failed!");
-        }
+        alert("Invalid Email or Password ❌");
         return;
     }
     window.location.href = "/home";
