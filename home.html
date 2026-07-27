@@ -324,15 +324,23 @@ function logout() {
 <script>
 const desktopToggle = document.getElementById("dark-mode-checkbox");
 const mobileToggle = document.getElementById("dark-mode-checkbox-mobile");
+const companyLogo = document.getElementById("companyLogo");
 
 function setTheme(isDark) {
 
     if (isDark) {
         document.body.classList.add("dark-mode");
         localStorage.setItem("odrs_theme", "dark");
+
+        // Dark mode logo
+        companyLogo.src = "logo2.png";
+
     } else {
         document.body.classList.remove("dark-mode");
         localStorage.setItem("odrs_theme", "light");
+
+        // Light mode logo
+        companyLogo.src = "logo.png";
     }
 
     if (desktopToggle) desktopToggle.checked = isDark;
