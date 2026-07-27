@@ -20,8 +20,8 @@
             <h2 class="slide-element">Login</h2>
             <form action="#">
                 <div class="field-wrapper slide-element">
-                    <input type="text" id="loginUsername" required>
-                    <label>Username</label>
+                    <input type="email" id="loginEmail" required>
+                    <label>Email</label>
                     <i class="fa-solid fa-user"></i>
                 </div>
 
@@ -90,38 +90,67 @@
     </div>
 
     <script src="style.js"></script>
+
+<!-- Supabase -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="supabase.js"></script>
+    
+    
 <script>
 // REGISTER FUNCTION
-function register() {
-  let username = document.getElementById("regUsername").value;
-  let email = document.getElementById("regEmail").value;
-  let password = document.getElementById("regPassword").value;
+async function register() {
 
-  localStorage.setItem("regUsername", username);
-  localStorage.setItem("regEmail", email);
-  localStorage.setItem("regPassword", password);
+    const username = document.getElementById("regUsername").value.trim();
+    const email = document.getElementById("regEmail").value.trim();
+    const password = document.getElementById("regPassword").value;
 
-  alert("Registered Successfully ✅");
+    const { data, error } = await supabase.auth.signUp({
+        email: email,
+        password: password
+    });
+
+    if (error) {
+        alert(error.message);
+        return;
+    }
+
+    const user = data.user;
+
+    const { error: profileError } = await supabase
+        .from("profiles")
+        .insert({
+            id: user.id,
+            username: username,
+            email: email
+        });
+
+    if (profileError) {
+        alert(profileError.message);
+        return;
+    }
+
+    alert("Registration Successful! ✅");
 }
-
 // LOGIN FUNCTION
-function login() {
-  let username = document.getElementById("loginUsername").value;
-  let password = document.getElementById("loginPassword").value;
+async function login() {
 
-  let storedUser = localStorage.getItem("regUsername");
-  let storedPass = localStorage.getItem("regPassword");
+    const email = document.getElementById("loginEmail").value.trim();
+    const password = document.getElementById("loginPassword").value;
 
-  if (username === storedUser && password === storedPass) {
+    const { data, error } = await supabase.auth.signInWithPassword({
+        email: email,
+        password: password
+    });
 
-    localStorage.setItem("username", storedUser);
-    localStorage.setItem("email", localStorage.getItem("regEmail"));
-
+    if (error) {
+        if (error.message.includes("already")) {
+            alert("Email already registered!");
+        } else {
+            alert("Registration failed!");
+        }
+        return;
+    }
     window.location.href = "/home";
-
-  } else {
-    alert("Invalid Username or Password ❌");
-  }
 }
 </script>
 
@@ -205,8 +234,5 @@ document.addEventListener("keydown", function(e) {
 });
 </script>
 
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<script src="supabase.js"></script>
-    
 </body>
 </html>
