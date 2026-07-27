@@ -438,3 +438,53 @@ body.dark-mode .dropdown p {
 body.dark-mode .theme-switch-container {
     color: #38bdf8; 
 }
+
+/* ==========================================
+   MOBILE SIDEBAR PROFILE & DARK MODE
+========================================== */
+
+/* Hide sidebar profile & dark mode on desktop */
+.sidebar-profile,
+.sidebar-darkmode {
+    display: none;
+}
+
+/* Mobile View */
+@media screen and (max-width: 768px) {
+
+    /* Hide header profile and dark mode */
+    .header-right-side .theme-switch-container,
+    .header-right-side .profile-menu {
+        display: none;
+    }
+
+    /* Show sidebar profile and dark mode */
+    .sidebar-profile,
+    .sidebar-darkmode {
+        display: block;
+        margin-top: 20px;
+        padding: 15px;
+        border-top: 1px solid #ddd;
+    }
+
+    .sidebar-profile h3 {
+        margin-bottom: 10px;
+    }
+
+    .sidebar-profile p {
+        margin: 8px 0;
+    }
+
+    .sidebar-profile a {
+        display: inline-block;
+        margin-top: 10px;
+        text-decoration: none;
+        color: inherit;
+    }
+
+    .sidebar-darkmode {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+}
