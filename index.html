@@ -90,100 +90,39 @@
     </div>
 
     <script src="style.js"></script>
-
-<!-- Supabase -->
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<script src="supabase.js"></script>
-    
-    
 <script>
-    
 // REGISTER FUNCTION
-async function register() {
+function register() {
+  let username = document.getElementById("regUsername").value;
+  let email = document.getElementById("regEmail").value;
+  let password = document.getElementById("regPassword").value;
 
-    const username = document.getElementById("regUsername").value.trim();
-    const email = document.getElementById("regEmail").value.trim().toLowerCase();
-    const password = document.getElementById("regPassword").value;
+  localStorage.setItem("regUsername", username);
+  localStorage.setItem("regEmail", email);
+  localStorage.setItem("regPassword", password);
 
-    if (!username || !email || !password) {
-        alert("Please fill all fields.");
-        return;
-    }
-
-    // Check username already exists
-    const { data: existing } = await supabaseClient
-        .from("profiles")
-        .select("username")
-        .eq("username", username)
-        .maybeSingle();
-
-    if (existing) {
-        alert("Username already exists ❌");
-        return;
-    }
-
-    // Create account
-    const { data, error } = await supabaseClient.auth.signUp({
-        email,
-        password
-    });
-
-    if (error) {
-        alert(error.message);
-        return;
-    }
-
-    // Save profile
-    const { error: profileError } = await supabaseClient
-        .from("profiles")
-        .insert({
-            id: data.user.id,
-            username,
-            email
-        });
-
-    if (profileError) {
-        alert(profileError.message);
-        return;
-    }
-
-    alert("Registration Successful ✅");
-
-    // Go directly to home page
-    window.location.href = "/home";
+  alert("Registered Successfully ✅");
 }
-    
+
 // LOGIN FUNCTION
-async function login() {
+function login() {
+  let username = document.getElementById("loginUsername").value;
+  let password = document.getElementById("loginPassword").value;
 
-    const username = document.getElementById("loginUsername").value.trim();
-    const password = document.getElementById("loginPassword").value;
+  let storedUser = localStorage.getItem("regUsername");
+  let storedPass = localStorage.getItem("regPassword");
 
-    const { data: profile, error } = await supabaseClient
-        .from("profiles")
-        .select("email")
-        .eq("username", username)
-        .single();
+  if (username === storedUser && password === storedPass) {
 
-    if (error || !profile) {
-        alert("Invalid Username or Password ❌");
-        return;
-    }
-
-    const { error: loginError } =
-        await supabaseClient.auth.signInWithPassword({
-            email: profile.email,
-            password
-        });
-
-    if (loginError) {
-        alert("Invalid Username or Password ❌");
-        return;
-    }
+    localStorage.setItem("username", storedUser);
+    localStorage.setItem("email", localStorage.getItem("regEmail"));
 
     window.location.href = "/home";
-}
 
+  } else {
+    alert("Invalid Username or Password ❌");
+  }
+}
 </script>
 
 <!-- Warning Popup -->
