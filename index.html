@@ -101,112 +101,87 @@
 // REGISTER FUNCTION
 async function register() {
 
-    try {
+    const username = document.getElementById("regUsername").value.trim();
+    const email = document.getElementById("regEmail").value.trim().toLowerCase();
+    const password = document.getElementById("regPassword").value;
 
-        const username = document.getElementById("regUsername").value.trim();
-        const email = document.getElementById("regEmail").value.trim().toLowerCase();
-        const password = document.getElementById("regPassword").value;
+    if (!username || !email || !password) {
+        alert("Please fill all fields.");
+        return;
+    }
 
-        if (!username || !email || !password) {
-            alert("Please fill all fields.");
-            return;
-        }
+    // Check username already exists
+    const { data: existing } = await supabaseClient
+        .from("profiles")
+        .select("username")
+        .eq("username", username)
+        .maybeSingle();
 
-        // Check username already exists
-        const { data: existingUser } = await supabaseClient
-            .from("profiles")
-            .select("username")
-            .eq("username", username)
-            .maybeSingle();
+    if (existing) {
+        alert("Username already exists ❌");
+        return;
+    }
 
-        if (existingUser) {
-            alert("Username already exists ❌");
-            return;
-        }
+    // Create account
+    const { data, error } = await supabaseClient.auth.signUp({
+        email,
+        password
+    });
 
-        // Register in Supabase Auth
-        const { data, error } = await supabaseClient.auth.signUp({
-            email,
-            password
+    if (error) {
+        alert(error.message);
+        return;
+    }
+
+    // Save profile
+    const { error: profileError } = await supabaseClient
+        .from("profiles")
+        .insert({
+            id: data.user.id,
+            username,
+            email
         });
 
-        if (error) {
-            alert(error.message);
-            return;
-        }
-
-        // Save user profile
-        const { error: profileError } = await supabaseClient
-            .from("profiles")
-            .insert({
-                id: data.user.id,
-                username,
-                email
-            });
-
-        if (profileError) {
-            alert(profileError.message);
-            return;
-        }
-
-        alert("Registration Successful ✅");
-
-        // Clear form
-        document.getElementById("regUsername").value = "";
-        document.getElementById("regEmail").value = "";
-        document.getElementById("regPassword").value = "";
-
-    } catch (err) {
-        console.error(err);
-        alert(err.message);
+    if (profileError) {
+        alert(profileError.message);
+        return;
     }
+
+    alert("Registration Successful ✅");
+
+    // Go directly to home page
+    window.location.href = "/home";
 }
     
 // LOGIN FUNCTION
 async function login() {
 
-    try {
+    const username = document.getElementById("loginUsername").value.trim();
+    const password = document.getElementById("loginPassword").value;
 
-        const username = document.getElementById("loginUsername").value.trim();
-        const password = document.getElementById("loginPassword").value;
+    const { data: profile, error } = await supabaseClient
+        .from("profiles")
+        .select("email")
+        .eq("username", username)
+        .single();
 
-        if (!username || !password) {
-            alert("Enter Username and Password");
-            return;
-        }
-
-        // Find email using username
-        const { data: profile, error: profileError } = await supabaseClient
-            .from("profiles")
-            .select("email")
-            .eq("username", username)
-            .single();
-
-        if (profileError || !profile) {
-            alert("Invalid Username or Password ❌");
-            return;
-        }
-
-        // Login using email internally
-        const { error: loginError } =
-            await supabaseClient.auth.signInWithPassword({
-                email: profile.email,
-                password
-            });
-
-        if (loginError) {
-            alert("Invalid Username or Password ❌");
-            return;
-        }
-
-        alert("Login Successful ✅");
-
-        window.location.href = "home.html";
-
-    } catch (err) {
-        console.error(err);
-        alert(err.message);
+    if (error || !profile) {
+        alert("Invalid Username or Password ❌");
+        return;
     }
+
+    const { error: loginError } =
+        await supabaseClient.auth.signInWithPassword({
+            email: profile.email,
+            password
+        });
+
+    if (loginError) {
+        alert("Invalid Username or Password ❌");
+        return;
+    }
+
+    window.location.href = "/home";
 }
 
 </script>
