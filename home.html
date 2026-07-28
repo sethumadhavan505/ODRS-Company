@@ -475,19 +475,27 @@ document.addEventListener("keydown", function(e) {
 </script>
 
 <script>
-document.querySelectorAll('.flip-card').forEach(card => {
-    card.addEventListener('click', function () {
+document.addEventListener("DOMContentLoaded", () => {
 
-        // Close all other cards
-        document.querySelectorAll('.flip-card').forEach(otherCard => {
-            if (otherCard !== this) {
-                otherCard.classList.remove('flipped');
-            }
+    const cards = document.querySelectorAll(".flip-card");
+
+    cards.forEach(card => {
+        card.addEventListener("click", function(e) {
+
+            e.stopPropagation();
+
+            cards.forEach(c => {
+                if (c !== this) {
+                    c.classList.remove("flipped");
+                }
+            });
+
+            this.classList.toggle("flipped");
+
+            console.log("Flipped:", this);
         });
-
-        // Toggle current card
-        this.classList.toggle('flipped');
     });
+
 });
 </script>
     
