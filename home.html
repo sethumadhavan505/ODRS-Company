@@ -319,21 +319,30 @@ function logout() {
 </script>
 
 <script>
-  const hamburgerBtn = document.getElementById("hamburger-btn");
+const hamburgerBtn = document.getElementById("hamburger-btn");
 const sidebar = document.getElementById("odrs-sidebar");
 const overlay = document.getElementById("mobile-overlay");
-
+    
+// Toggle sidebar
 hamburgerBtn.addEventListener("click", () => {
-
     sidebar.classList.toggle("open");
     overlay.classList.toggle("show");
-
 });
 
-// Close when overlay is clicked
+// Close sidebar when overlay is clicked
 overlay.addEventListener("click", () => {
     sidebar.classList.remove("open");
     overlay.classList.remove("show");
+});
+
+// Close sidebar after clicking any sidebar link (mobile only)
+document.querySelectorAll(".left-panel a").forEach(link => {
+    link.addEventListener("click", () => {
+        if (window.innerWidth <= 768) {
+            sidebar.classList.remove("open");
+            overlay.classList.remove("show");
+        }
+    });
 });
 </script>
 
