@@ -140,91 +140,96 @@ body{
    NEW: 3D FLIP-CARD OFFERS GRID
 ========================================== */
 
-.offers-grid{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-    gap:25px;
-    perspective:1000px;
+.offers-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 25px;
 }
 
-.flip-card{
-    position:relative;
-    width:100%;
-    height:220px;
-    cursor:pointer;
-    perspective:1000px;
+.flip-card {
+  background-color: transparent;
+  height: 220px; 
+  perspective: 1000px;
+  cursor: pointer;
 }
 
-.flip-card-inner{
-    position:relative;
-    width:100%;
-    height:100%;
-    transition:transform .6s ease;
-    transform-style:preserve-3d;
-    -webkit-transform-style:preserve-3d;
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.6s cubic-bezier(0.4, 0.2, 0.2, 1);
+  transform-style: preserve-3d;
+  border-radius: 16px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
 }
 
-.flip-card.flipped .flip-card-inner{
-    transform:rotateY(180deg);
+.flip-card.flipped .flip-card-inner {
+  transform: rotateY(180deg);
 }
 
-.flip-card-front,
-.flip-card-back{
-    position:absolute;
-    top:0;
-    left:0;
-    width:100%;
-    height:100%;
-
-    border-radius:16px;
-    overflow:hidden;
-
-    backface-visibility:hidden;
-    -webkit-backface-visibility:hidden;
+.flip-card-front, 
+.flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden; 
+  backface-visibility: hidden;
+  border-radius: 16px;
+  overflow: hidden;
 }
 
-.flip-card-front{
-    background:#fff;
+.flip-card-front {
+  background-color: #fff;
 }
 
-.flip-card-front img{
-    width:100%;
-    height:100%;
-    object-fit:cover;
+.flip-card-front img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; 
+  object-position: center;
 }
 
-.flip-card-back{
-    transform:rotateY(180deg);
-    background:linear-gradient(135deg,#1e293b,#0f172a);
-
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-    align-items:center;
-
-    padding:20px;
-    color:#fff;
-    border:2px solid #0ea5e9;
+.flip-card-back {
+  background: linear-gradient(135deg, #1e293b, #0f172a);
+  color: white;
+  transform: rotateY(180deg); 
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  border: 2px solid #0ea5e9;
 }
 
-.flip-card-back h3{
-    margin-bottom:10px;
+.flip-card-back h3 {
+  font-size: 18px;
+  color: #f8fafc;
+  margin-bottom: 8px;
 }
 
-.price-tag{
-    margin:10px 0;
-    font-size:22px;
-    font-weight:bold;
-    color:#38bdf8;
+.price-tag {
+  background: rgba(14, 165, 233, 0.2);
+  color: #38bdf8;
+  font-size: 22px;
+  font-weight: 800;
+  padding: 4px 16px;
+  border-radius: 20px;
+  border: 1px solid rgba(56, 189, 248, 0.4);
+  margin-bottom: 10px;
 }
 
-.flip-card-back p{
-    text-align:center;
+.flip-card-back p {
+  font-size: 13px;
+  color: #cbd5e1;
+  line-height: 1.4;
+  margin-bottom: 8px;
 }
 
-.flip-card-back small{
-    margin-top:8px;
-    color:#94a3b8;
+.flip-card-back small {
+  font-size: 11px;
+  color: #94a3b8;
+  font-style: italic;
 }
 
 /* CONTACT US SIDEBAR STYLE */
