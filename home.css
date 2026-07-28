@@ -289,13 +289,16 @@ body{
 
   .left-panel{
     position:fixed;
-    top:0;
-    left:-340px;
-    width:320px;
-    height:100vh;
+    top:70px;
+    left:-250px;
+    width:250px;
+    height:calc(100vh - 70px);
+
     transition:left .3s ease;
-    box-shadow: 4px 0 15px rgba(0,0,0,0.5);
-  }
+    box-shadow:4px 0 15px rgba(0,0,0,0.5);
+
+    z-index:999;
+}
 
   .left-panel.open {
     left: 0; 
