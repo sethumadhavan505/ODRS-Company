@@ -613,3 +613,19 @@ body.dark-mode .theme-switch-container {
 .logout-btn:hover{
     color:#ff2d2d;
 }
+
+
+
+
+.left-panel ul li{
+    margin:20px 0;
+}
+
+.left-panel ul li a{
+    font-size:16px;
+}
+
+.left-panel ul li a i{
+    font-size:20px;
+    width:22px;
+}
