@@ -500,9 +500,9 @@ body.dark-mode .theme-switch-container {
     margin-top:auto;
     display:flex;
     flex-direction:column;
-    gap:8px;
+    gap:10px;
     width:100%;
-    padding:0 6px;
+    padding:0;
 }
     .sidebar-profile h3 {
         margin-bottom: 10px;
@@ -630,4 +630,11 @@ body.dark-mode .theme-switch-container {
 .logout-btn:hover{
     background:#364d68;
     color:#ff3b3b;
+}
+
+.profile-card,
+.sidebar-darkmode,
+.logout-btn{
+    width:100%;
+    margin:0;
 }
