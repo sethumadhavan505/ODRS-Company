@@ -99,8 +99,6 @@ body{
     flex-direction:column;
 
     overflow-y:auto;
-    
-    z-index:999;
 }
 
 .right-panel{
