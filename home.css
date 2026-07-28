@@ -500,7 +500,7 @@ body.dark-mode .theme-switch-container {
     margin-top:auto;
     display:flex;
     flex-direction:column;
-    gap:15px;
+    gap:8px;
     width:100%;
     padding:0;
 }
@@ -539,9 +539,9 @@ body.dark-mode .theme-switch-container {
     align-items:center;
 
     width:100%;
-    min-height:70px;
+    min-height:55px;
 
-    padding:18px;
+    padding:12px;
 
     background:#29445d;
     border-radius:18px;
@@ -560,25 +560,25 @@ body.dark-mode .theme-switch-container {
     gap:15px;
 
     width:100%;
-    min-height:90px;
+    min-height:75px;
 
-    padding:18px;
+    padding:12px;
 
     background:#29445d;
     border-radius:18px;
 }
 
 .profile-avatar{
-    width:60px;
-    height:60px;
-    min-width:60px;
+    width:50px;
+    height:50px;
+    min-width:50px;
     border-radius:50%;
     background:#315673;
     display:flex;
     justify-content:center;
     align-items:center;
     color:#4f8cff;
-    font-size:28px;
+    font-size:24px;
 }
 
 .profile-info{
@@ -612,9 +612,9 @@ body.dark-mode .theme-switch-container {
     gap:12px;
 
     width:100%;
-    min-height:70px;
+    min-height:55px;
 
-    padding:18px;
+    padding:12px;
 
     background:#29445d;
     border-radius:18px;
