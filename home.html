@@ -319,19 +319,22 @@ function logout() {
 </script>
 
 <script>
-  const hamburgerBtn = document.getElementById('hamburger-btn');
-  const sidebar = document.getElementById('odrs-sidebar');
-  const overlay = document.getElementById('mobile-overlay');
+  const hamburgerBtn = document.getElementById("hamburger-btn");
+const sidebar = document.getElementById("odrs-sidebar");
+const overlay = document.getElementById("mobile-overlay");
 
-  hamburgerBtn.addEventListener('click', () => {
-    sidebar.classList.add('open');
-    overlay.classList.add('show');
-  });
+hamburgerBtn.addEventListener("click", () => {
 
-  overlay.addEventListener('click', () => {
-    sidebar.classList.remove('open');
-    overlay.classList.remove('show');
-  });
+    sidebar.classList.toggle("open");
+    overlay.classList.toggle("show");
+
+});
+
+// Close when overlay is clicked
+overlay.addEventListener("click", () => {
+    sidebar.classList.remove("open");
+    overlay.classList.remove("show");
+});
 </script>
 
 <script>
