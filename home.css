@@ -545,18 +545,23 @@ body.dark-mode .theme-switch-container {
     align-items:center;
 
     width:100%;
-    min-height:55px;
-
-    padding:12px;
+    padding:12px 20px;
 
     background:#29445d;
-    border-radius:18px;
+    border-radius:0;
 }
 
 /* Push Profile Card to Bottom */
 .sidebar-bottom{
     margin-top:auto;
-    padding:20px;
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+
+    width:calc(100% + 40px);
+    margin-left:-20px;
+
+    padding:0;
 }
 
 /* Profile Card */
@@ -566,10 +571,10 @@ body.dark-mode .theme-switch-container {
     gap:12px;
 
     width:100%;
-    padding:12px;
+    padding:12px 20px;
 
     background:#29445d;
-    border-radius:16px;
+    border-radius:0;
 }
 
 .profile-avatar{
@@ -616,10 +621,10 @@ body.dark-mode .theme-switch-container {
     gap:12px;
 
     width:100%;
-    padding:12px;
+    padding:12px 20px;
 
     background:#29445d;
-    border-radius:16px;
+    border-radius:0;
 
     color:#ff6666;
     text-decoration:none;
