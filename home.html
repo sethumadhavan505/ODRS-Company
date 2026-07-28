@@ -475,28 +475,20 @@ document.addEventListener("keydown", function(e) {
 </script>
 
 <script>
-window.onload = function () {
+document.querySelectorAll('.flip-card').forEach(card => {
+    card.addEventListener('click', function () {
 
-    const cards = document.querySelectorAll(".flip-card");
+        // Close all other cards
+        document.querySelectorAll('.flip-card').forEach(otherCard => {
+            if (otherCard !== this) {
+                otherCard.classList.remove('flipped');
+            }
+        });
 
-    console.log("Cards found:", cards.length);
-
-    cards.forEach(card => {
-
-        card.onclick = function () {
-
-            cards.forEach(c => {
-                if (c !== this) c.classList.remove("flipped");
-            });
-
-            this.classList.toggle("flipped");
-
-            console.log("Clicked");
-        };
-
+        // Toggle current card
+        this.classList.toggle('flipped');
     });
-
-};
+});
 </script>
     
 </body>
