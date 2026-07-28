@@ -502,7 +502,7 @@ body.dark-mode .theme-switch-container {
     flex-direction:column;
     gap:8px;
     width:100%;
-    padding:0;
+    padding:0 6px;
 }
     .sidebar-profile h3 {
         margin-bottom: 10px;
@@ -519,10 +519,16 @@ body.dark-mode .theme-switch-container {
         color: inherit;
     }
 
-    .sidebar-darkmode {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
+    .sidebar-darkmode{
+        display:flex;
+        justify-content:space-between;
+        align-items:center;
+
+        width:100%;
+        padding:12px;
+
+        background:#29445d;
+        border-radius:16px;
     }
 }
 
@@ -557,15 +563,13 @@ body.dark-mode .theme-switch-container {
 .profile-card{
     display:flex;
     align-items:center;
-    gap:15px;
+    gap:12px;
 
     width:100%;
-    min-height:75px;
-
     padding:12px;
 
     background:#29445d;
-    border-radius:18px;
+    border-radius:16px;
 }
 
 .profile-avatar{
@@ -612,12 +616,10 @@ body.dark-mode .theme-switch-container {
     gap:12px;
 
     width:100%;
-    min-height:55px;
-
     padding:12px;
 
     background:#29445d;
-    border-radius:18px;
+    border-radius:16px;
 
     color:#ff6666;
     text-decoration:none;
