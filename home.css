@@ -92,23 +92,20 @@ body{
 
 .left-panel{
     position:fixed;
-
     top:70px;
     left:0;
 
-    width:320px;
+    width:250px;
     height:calc(100vh - 70px);
 
     background:#1e293b;
     color:white;
-
-    padding:30px 20px;
+    padding:25px 18px;
 
     display:flex;
     flex-direction:column;
 
     overflow-y:auto;
-
     z-index:999;
 }
 
@@ -116,7 +113,7 @@ body{
     position:fixed;
 
     top:70px;
-    left:320px;
+    left:250px;
     right:0;
     bottom:0;
 
