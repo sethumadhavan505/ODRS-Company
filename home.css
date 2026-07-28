@@ -18,8 +18,12 @@ body{
     height:70px;
     background:white;
     box-shadow:0 2px 8px rgba(0,0,0,0.1);
-    position: relative;
-    z-index: 100;
+
+    position:fixed;
+    top:0;
+    left:0;
+    right:0;
+    z-index:1000;
 }
 
 .logo-and-menu {
@@ -75,29 +79,42 @@ body{
 
 /* MAIN DASHBOARD LAYOUT */
 .container{
-    display:flex;
-    min-height: calc(100vh - 70px);
+    margin-top:70px;
 }
 
 
 .left-panel{
-    width:320px;
-    min-width:320px;
-    flex-shrink:0;
+    position:fixed;
+    top:70px;
+    left:0;
+
+    width:250px;
+    height:calc(100vh - 70px);
+
     background:#1e293b;
     color:white;
-    padding:30px 20px;
-    min-height:calc(100vh - 70px);
-    z-index:999;
+    padding:25px 18px;
+
     display:flex;
     flex-direction:column;
+
+    overflow-y:auto;
+    z-index:999;
 }
 
-
 .right-panel{
-    flex-grow: 1;
-    width: calc(100% - 260px); 
+    position:fixed;
+    top:70px;
+    left:250px;
+    right:0;
+    bottom:0;
+
     padding:40px;
+
+    overflow-y:auto;
+    overflow-x:hidden;
+
+    background:#f8fafc;
 }
 
 .right-panel a{
@@ -284,10 +301,18 @@ body{
     left: 0; 
   }
 
-  .right-panel {
-    width: 100%;
-    padding: 20px;
-  }
+  .right-panel{
+    position:relative;
+    top:0;
+    left:0;
+    right:auto;
+    bottom:auto;
+
+    width:100%;
+    padding:20px;
+
+    overflow:visible;
+}
 
   .overlay-shadow.show {
     display: block;
