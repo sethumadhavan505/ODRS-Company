@@ -88,7 +88,7 @@ body{
     top:70px;
     left:0;
 
-    width:250px;
+    width:280px;
     height:calc(100vh - 70px);
 
     background:#1e293b;
@@ -104,7 +104,7 @@ body{
 .right-panel{
     position:fixed;
     top:70px;
-    left:250px;
+    left:280px;
     right:0;
     bottom:0;
 
@@ -289,8 +289,8 @@ body{
   .left-panel{
     position:fixed;
     top:70px;
-    left:-250px;
-    width:250px;
+    left:-280px;
+    width:280px;
     height:calc(100vh - 70px);
 
     transition:left .3s ease;
