@@ -93,12 +93,13 @@ body{
 
     background:#1e293b;
     color:white;
-    padding:25px 18px;
+    padding:20px;
 
     display:flex;
     flex-direction:column;
 
     overflow-y:auto;
+    
     z-index:999;
 }
 
@@ -498,7 +499,11 @@ body.dark-mode .theme-switch-container {
 }
 
 .sidebar-bottom{
-    display:block;
+    margin-top:auto;
+    display:flex;
+    flex-direction:column;
+    gap:18px;
+    padding-top:20px;
 }
 
     .sidebar-profile h3 {
@@ -534,8 +539,10 @@ body.dark-mode .theme-switch-container {
     display:flex;
     justify-content:space-between;
     align-items:center;
-    padding:15px 20px;
-    margin-top:20px;
+
+    background:#29445d;
+    border-radius:16px;
+    padding:16px;
 }
 
 /* Push Profile Card to Bottom */
@@ -549,10 +556,10 @@ body.dark-mode .theme-switch-container {
     display:flex;
     align-items:center;
     gap:15px;
-    width:100%;
-    background:#214354;
-    border-radius:18px;
-    padding:18px;
+
+    background:#29445d;
+    border-radius:16px;
+    padding:16px;
 }
 
 .profile-avatar{
@@ -597,13 +604,20 @@ body.dark-mode .theme-switch-container {
     display:flex;
     align-items:center;
     gap:12px;
-    margin-top:18px;
-    color:#ff5a5a;
+
+    background:#29445d;
+    border-radius:16px;
+    padding:16px;
+
+    color:#ff6666;
     text-decoration:none;
     font-size:18px;
     font-weight:600;
+
+    transition:.3s;
 }
 
 .logout-btn:hover{
-    color:#ff2d2d;
+    background:#364d68;
+    color:#ff3b3b;
 }
