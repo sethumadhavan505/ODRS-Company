@@ -111,7 +111,6 @@ body{
 
 .right-panel{
     position:fixed;
-
     top:70px;
     left:250px;
     right:0;
@@ -122,7 +121,7 @@ body{
     overflow-y:auto;
     overflow-x:hidden;
 
-    background:#f8fafc;
+    background:inherit;
 }
 
 .right-panel a{
@@ -439,43 +438,112 @@ input:checked + .slider:before {
    2. UPDATED "DARK MODE" COLOR PALETTE
 ========================================== */
 
-body.dark-mode {
-    background-color: #0f172a; 
+body.dark-mode{
+    background:#0f172a;
 }
 
-body.dark-mode .top-bar {
-    background-color: #1e293b;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.5);
+/* Top Bar */
+body.dark-mode .top-bar{
+    background:#1e293b;
+    box-shadow:0 2px 8px rgba(0,0,0,.5);
 }
 
-body.dark-mode .right-panel h2 {
-    color: #f8fafc;
+/* Left Sidebar */
+body.dark-mode .left-panel{
+    background:#1e293b;
 }
 
-/* In Dark mode, give the cards a faint cyan neon glow so they jump off the dark slate */
-body.dark-mode .flip-card-inner {
-    box-shadow: 0 4px 20px rgba(14, 165, 233, 0.15);
+/* Right Panel */
+body.dark-mode .right-panel{
+    background:#0f172a;
+    color:#f8fafc;
 }
 
-body.dark-mode .flip-card-front {
-    background-color: #1e293b;
+/* Headings */
+body.dark-mode .right-panel h1,
+body.dark-mode .right-panel h2,
+body.dark-mode .right-panel h3,
+body.dark-mode .right-panel h4,
+body.dark-mode .right-panel h5,
+body.dark-mode .right-panel h6{
+    color:#f8fafc;
 }
 
-body.dark-mode .menu-toggle-btn {
-    color: #f8fafc;
+/* Paragraphs */
+body.dark-mode .right-panel p,
+body.dark-mode .right-panel span,
+body.dark-mode .right-panel li,
+body.dark-mode .right-panel label{
+    color:#cbd5e1;
 }
 
-body.dark-mode .dropdown {
-    background-color: #1e293b;
-    border: 1px solid #334155;
+/* Links */
+body.dark-mode .right-panel a{
+    color:white;
 }
 
-body.dark-mode .dropdown p {
-    color: #f8fafc;
+/* Offer Cards */
+body.dark-mode .flip-card-inner{
+    box-shadow:0 4px 20px rgba(14,165,233,.18);
 }
 
-body.dark-mode .theme-switch-container {
-    color: #38bdf8; 
+body.dark-mode .flip-card-front{
+    background:#1e293b;
+}
+
+body.dark-mode .flip-card-back{
+    background:linear-gradient(135deg,#0f172a,#1e293b);
+}
+
+/* Dropdown */
+body.dark-mode .dropdown{
+    background:#1e293b;
+    border:1px solid #334155;
+}
+
+body.dark-mode .dropdown p{
+    color:#f8fafc;
+}
+
+body.dark-mode .dropdown a{
+    color:#38bdf8;
+}
+
+/* Theme Switch */
+body.dark-mode .theme-switch-container{
+    color:#38bdf8;
+}
+
+/* Profile Card */
+body.dark-mode .profile-card{
+    background:#223247;
+}
+
+body.dark-mode .profile-avatar{
+    background:#31465f;
+}
+
+body.dark-mode .profile-info h4{
+    color:#ffffff;
+}
+
+body.dark-mode .profile-info p{
+    color:#cbd5e1;
+}
+
+/* Smooth Transition */
+body,
+.top-bar,
+.left-panel,
+.right-panel,
+.dropdown,
+.flip-card-inner,
+.profile-card{
+    transition:
+        background-color .3s ease,
+        color .3s ease,
+        border-color .3s ease,
+        box-shadow .3s ease;
 }
 
 /* ==========================================
