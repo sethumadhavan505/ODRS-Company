@@ -475,28 +475,28 @@ document.addEventListener("keydown", function(e) {
 </script>
 
 <script>
-document.addEventListener("DOMContentLoaded", () => {
+window.onload = function () {
 
     const cards = document.querySelectorAll(".flip-card");
 
-    cards.forEach(card => {
-        card.addEventListener("click", function(e) {
+    console.log("Cards found:", cards.length);
 
-            e.stopPropagation();
+    cards.forEach(card => {
+
+        card.onclick = function () {
 
             cards.forEach(c => {
-                if (c !== this) {
-                    c.classList.remove("flipped");
-                }
+                if (c !== this) c.classList.remove("flipped");
             });
 
             this.classList.toggle("flipped");
 
-            console.log("Flipped:", this);
-        });
+            console.log("Clicked");
+        };
+
     });
 
-});
+};
 </script>
     
 </body>
