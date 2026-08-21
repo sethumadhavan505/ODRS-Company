@@ -645,13 +645,15 @@ body.dark-mode .theme-switch-container {
     margin:0;
 }
 
+
 /* ==========================================
    CODING ID SALE - PLATFORM PRICE LIST
 ========================================== */
 
 .coding-id-back {
-    padding: 15px !important;
+    padding: 14px 16px !important;
     justify-content: center;
+    align-items: center;
 }
 
 .coding-id-back h3 {
@@ -660,6 +662,9 @@ body.dark-mode .theme-switch-container {
     margin-bottom: 10px;
 }
 
+
+/* PLATFORM LIST */
+
 .coding-platform-list {
     width: 100%;
     display: flex;
@@ -667,70 +672,153 @@ body.dark-mode .theme-switch-container {
     gap: 7px;
 }
 
+
+/* PLATFORM ROW */
+
 .coding-platform {
     width: 100%;
-    min-height: 38px;
+    height: 43px;
 
     display: flex;
     align-items: center;
     justify-content: space-between;
 
-    padding: 6px 10px;
+    padding: 4px 10px 4px 5px;
 
     background: rgba(14, 165, 233, 0.08);
+
     border: 1px solid rgba(56, 189, 248, 0.35);
-    border-radius: 8px;
+
+    border-radius: 9px;
 
     transition: all 0.25s ease;
 }
 
-.coding-platform:hover {
-    background: rgba(14, 165, 233, 0.16);
-    border-color: #38bdf8;
-    transform: translateX(3px);
-}
+
+/* LEFT SIDE */
 
 .platform-info {
     display: flex;
     align-items: center;
-    gap: 7px;
+    gap: 8px;
 }
 
-.platform-name {
-    color: #f8fafc;
-    font-size: 13px;
-    font-weight: 600;
-}
 
-.platform-count {
-    min-width: 20px;
-    height: 20px;
+/* ROUND LOGO CONTAINER */
+
+.platform-logo {
+    width: 34px;
+    height: 34px;
+
+    min-width: 34px;
+    min-height: 34px;
+
+    border-radius: 50%;
+
+    background: #ffffff;
 
     display: flex;
     align-items: center;
     justify-content: center;
 
-    padding: 0 5px;
+    overflow: hidden;
 
-    background: rgba(56, 189, 248, 0.15);
-    border: 1px solid rgba(56, 189, 248, 0.5);
-    border-radius: 50%;
+    border: 1px solid rgba(56, 189, 248, 0.7);
 
-    color: #38bdf8;
-    font-size: 11px;
-    font-weight: 700;
+    box-shadow:
+        0 0 5px rgba(56, 189, 248, 0.25);
+
 }
 
-.platform-price {
-    color: #38bdf8;
-    font-size: 16px;
-    font-weight: 800;
+
+/* ONLINE LOGO */
+
+.platform-logo img {
+    width: 72%;
+    height: 72%;
+
+    object-fit: contain;
+
+    display: block;
+
+    border-radius: 0;
+}
+
+
+/* PLATFORM NAME */
+
+.platform-name {
+    color: #f8fafc;
+
+    font-size: 13px;
+
+    font-weight: 700;
+
     white-space: nowrap;
 }
 
-.coding-delivery {
-    margin-top: 8px;
-    color: #94a3b8;
+
+/* COUNT CIRCLE */
+
+.platform-count {
+    width: 20px;
+    height: 20px;
+
+    min-width: 20px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: rgba(56, 189, 248, 0.12);
+
+    border: 1px solid rgba(56, 189, 248, 0.6);
+
+    border-radius: 50%;
+
+    color: #38bdf8;
+
     font-size: 10px;
+
+    font-weight: 700;
+}
+
+
+/* PRICE */
+
+.platform-price {
+    color: #38bdf8;
+
+    font-size: 16px;
+
+    font-weight: 800;
+
+    white-space: nowrap;
+}
+
+
+/* HOVER */
+
+.coding-platform:hover {
+    background: rgba(14, 165, 233, 0.15);
+
+    border-color: #38bdf8;
+
+    transform: translateX(3px);
+
+    box-shadow:
+        0 0 10px rgba(14, 165, 233, 0.15);
+}
+
+
+/* DELIVERY */
+
+.coding-delivery {
+    margin-top: 7px;
+
+    color: #94a3b8;
+
+    font-size: 10px;
+
     font-style: italic;
 }
