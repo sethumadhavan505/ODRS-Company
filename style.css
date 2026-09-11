@@ -208,7 +208,7 @@
     border-bottom: 2px solid #fff;
 
     /* Move typed text below the label */
-    padding: 22px 45px 0 0;
+    padding: 16px 45px 0 0;
 
     transition: .5s;
 }
