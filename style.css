@@ -263,6 +263,15 @@
 }
 
 /* ==========================================
+   HIDE BROWSER DEFAULT PASSWORD EYE
+========================================== */
+
+input[type="password"]::-ms-reveal,
+input[type="password"]::-ms-clear {
+    display: none;
+}
+
+/* ==========================================
    PASSWORD EYE BUTTON
 ========================================== */
 
