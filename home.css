@@ -579,77 +579,81 @@ body.dark-mode .book-now-btn:hover {
 
 .theme-switch-container {
     display: flex;
-
     align-items: center;
-
     gap: 8px;
-
-    color: #64748b;
-
-    font-size: 18px;
 }
 
 .switch {
     position: relative;
-
     display: inline-block;
-
-    width: 48px;
-    height: 24px;
+    width: 58px;
+    height: 30px;
+    flex-shrink: 0;
 }
 
 .switch input {
     opacity: 0;
-
     width: 0;
     height: 0;
 }
 
 .slider {
     position: absolute;
-
     cursor: pointer;
-
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
+    inset: 0;
 
     background-color: #cbd5e1;
 
-    transition: 0.3s ease-in-out;
+    border-radius: 30px;
 
-    border-radius: 24px;
+    transition: background-color 0.3s ease;
 }
 
+/* SUN - OFF / LIGHT MODE */
 .slider:before {
     position: absolute;
+    content: "\f185";
 
-    content: "";
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;
 
-    height: 18px;
-    width: 18px;
+    width: 24px;
+    height: 24px;
 
     left: 3px;
-    bottom: 3px;
+    top: 3px;
 
-    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
-    transition: 0.3s ease-in-out;
+    background-color: #ffffff;
+    color: #facc15;
 
     border-radius: 50%;
 
+    font-size: 14px;
+
     box-shadow:
-        0 2px 4px
-        rgba(0, 0, 0, 0.2);
+        0 2px 6px rgba(0, 0, 0, 0.18);
+
+    transition:
+        transform 0.3s ease,
+        color 0.3s ease;
 }
 
-input:checked + .slider {
-    background-color: #0ea5e9;
+/* DARK MODE ON */
+.switch input:checked + .slider {
+    background-color: #334155;
 }
 
-input:checked + .slider:before {
-    transform: translateX(24px);
+/* MOON - ON / DARK MODE */
+.switch input:checked + .slider:before {
+    content: "\f186";
+
+    transform: translateX(28px);
+
+    color: #64748b;
 }
 
 
