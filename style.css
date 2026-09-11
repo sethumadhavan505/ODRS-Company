@@ -213,33 +213,6 @@
     transition: .5s;
 }
 
-/* LABEL — ALWAYS FIXED AT TOP */
-.field-wrapper label {
-    position: absolute;
-
-    top: 0;
-    left: 0;
-
-    transform: none;
-
-    font-size: 14px;
-    color: #00d4ff;
-
-    pointer-events: none;
-}
-
-/* Keep label fixed when typing/focusing */
-.field-wrapper input:focus ~ label,
-.field-wrapper input:valid ~ label {
-    top: 0;
-    left: 0;
-
-    transform: none;
-
-    font-size: 14px;
-    color: #00d4ff;
-}
-
 .field-wrapper input:focus,
 .field-wrapper input:valid {
     border-bottom: 2px solid #00d4ff;
@@ -248,15 +221,11 @@
 /* FIXED LABEL POSITION */
 .field-wrapper label {
     position: absolute;
-
     top: 0;
     left: 0;
-
     transform: translateY(0);
-
     font-size: 14px;
     color: #00d4ff;
-
     pointer-events: none;
 }
 
@@ -265,9 +234,7 @@
 .field-wrapper input:valid ~ label {
     top: 0;
     left: 0;
-
     transform: translateY(0);
-
     font-size: 14px;
     color: #00d4ff;
 }
@@ -275,16 +242,13 @@
 /* Normal icons: username, email, lock */
 .field-wrapper > i {
     position: absolute;
-
     top: 25px;
     right: 0;
 
     font-size: 18px;
-
     transform: translateY(-50%);
 
     color: #fff;
-
     pointer-events: none;
 }
 
@@ -293,16 +257,19 @@
     color: #00d4ff;
 }
 
+/* Hide old icon inside password fields */
+.password-field > i {
+    display: none !important;
+}
+
 /* ==========================================
    PASSWORD EYE BUTTON
 ========================================== */
 
 .password-field .password-toggle {
     position: absolute;
-
     top: 25px;
     right: 0;
-
     transform: translateY(-50%);
 
     width: 35px;
@@ -318,9 +285,7 @@
     background: transparent;
 
     color: #fff;
-
     cursor: pointer;
-
     z-index: 10;
 }
 
@@ -330,13 +295,9 @@
 
 .password-field .password-toggle i {
     position: static;
-
     transform: none;
-
     font-size: 17px;
-
     color: inherit;
-
     pointer-events: none;
 }
 
