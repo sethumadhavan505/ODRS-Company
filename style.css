@@ -192,6 +192,7 @@
     margin-top: 25px;
 }
 
+/* INPUT */
 .field-wrapper input {
     width: 100%;
     height: 50px;
@@ -206,9 +207,37 @@
 
     border-bottom: 2px solid #fff;
 
+    /* Move typed text below the label */
     padding: 16px 45px 0 0;
 
     transition: .5s;
+}
+
+/* LABEL — ALWAYS FIXED AT TOP */
+.field-wrapper label {
+    position: absolute;
+
+    top: 0;
+    left: 0;
+
+    transform: none;
+
+    font-size: 14px;
+    color: #00d4ff;
+
+    pointer-events: none;
+}
+
+/* Keep label fixed when typing/focusing */
+.field-wrapper input:focus ~ label,
+.field-wrapper input:valid ~ label {
+    top: 0;
+    left: 0;
+
+    transform: none;
+
+    font-size: 14px;
+    color: #00d4ff;
 }
 
 .field-wrapper input:focus,
@@ -216,27 +245,26 @@
     border-bottom: 2px solid #00d4ff;
 }
 
-/* LABEL */
+/* FIXED LABEL POSITION */
 .field-wrapper label {
     position: absolute;
 
-    top: 25px;
+    top: 0;
     left: 0;
 
-    transform: translateY(-50%);
+    transform: translateY(0);
 
-    font-size: 16px;
-    color: #fff;
+    font-size: 14px;
+    color: #00d4ff;
 
     pointer-events: none;
-
-    transition: .3s ease;
 }
 
-/* Move label ABOVE the input when active */
+/* Keep label in the same position always */
 .field-wrapper input:focus ~ label,
 .field-wrapper input:valid ~ label {
     top: 0;
+    left: 0;
 
     transform: translateY(0);
 
