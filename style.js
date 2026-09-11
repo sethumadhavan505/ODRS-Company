@@ -29,3 +29,26 @@ loginForm.addEventListener('submit', function(e) {
         alert("Please enter username and password");
     }
 });
+
+/* ===== PASSWORD VISIBILITY TOGGLE ===== */
+
+function togglePassword(inputId, button) {
+    const passwordInput = document.getElementById(inputId);
+    const icon = button.querySelector("i");
+
+    if (passwordInput.type === "password") {
+        passwordInput.type = "text";
+
+        icon.classList.remove("fa-eye-slash");
+        icon.classList.add("fa-eye");
+
+        button.setAttribute("aria-label", "Hide password");
+    } else {
+        passwordInput.type = "password";
+
+        icon.classList.remove("fa-eye");
+        icon.classList.add("fa-eye-slash");
+
+        button.setAttribute("aria-label", "Show password");
+    }
+}
