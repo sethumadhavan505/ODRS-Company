@@ -25,10 +25,17 @@
                     <i class="fa-solid fa-user"></i>
                 </div>
 
-                <div class="field-wrapper slide-element">
+                <div class="field-wrapper slide-element password-field">
                     <input type="password" id="loginPassword" required>
                     <label>Password</label>
-                    <i class="fa-solid fa-lock"></i>
+
+                    <button
+                        type="button"
+                        class="password-toggle"
+                        onclick="togglePassword('loginPassword', this)"
+                        aria-label="Show password">
+                        <i class="fa-solid fa-eye-slash"></i>
+                    </button>
                 </div>
 
                 <div class="field-wrapper slide-element">
@@ -62,10 +69,17 @@
                     <i class="fa-solid fa-envelope"></i>
                 </div>
 
-                <div class="field-wrapper slide-element">
+                <div class="field-wrapper slide-element password-field">
                     <input type="password" id="regPassword" required>
                     <label>Password</label>
-                    <i class="fa-solid fa-lock"></i>
+
+                    <button
+                        type="button"
+                        class="password-toggle"
+                        onclick="togglePassword('regPassword', this)"
+                        aria-label="Show password">
+                        <i class="fa-solid fa-eye-slash"></i>
+                    </button>
                 </div>
 
                 <div class="field-wrapper slide-element">
