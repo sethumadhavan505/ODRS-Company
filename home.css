@@ -1276,3 +1276,69 @@ body.dark-mode .theme-switch-container {
     }
 
 }
+
+
+
+
+
+/* ODRS OFFICE CLOSED NOTICE */
+.odrs-closed-notice {
+    position: fixed;
+    inset: 0;
+    z-index: 999999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow-y: auto;
+    padding: 20px;
+    background: rgba(5, 20, 40, 0.96);
+}
+
+.odrs-closed-content {
+    width: 100%;
+    max-width: 1000px;
+    text-align: center;
+    color: #ffffff;
+}
+
+.odrs-closed-content h1 {
+    margin-bottom: 12px;
+    color: #ff3838;
+    font-size: clamp(25px, 4vw, 46px);
+    font-weight: 800;
+    letter-spacing: 2px;
+}
+
+.odrs-closed-content p {
+    font-size: 17px;
+    margin: 12px 0 22px;
+}
+
+.odrs-closed-image {
+    display: block;
+    width: 100%;
+    max-width: 900px;
+    max-height: 70vh;
+    object-fit: contain;
+    margin: 0 auto;
+    border-radius: 14px;
+    box-shadow: 0 15px 45px rgba(0, 0, 0, 0.35);
+}
+
+.odrs-closed-message {
+    color: #d8e1ed;
+}
+
+@media (max-width: 600px) {
+    .odrs-closed-notice {
+        padding: 12px;
+    }
+
+    .odrs-closed-content h1 {
+        letter-spacing: 1px;
+    }
+
+    .odrs-closed-image {
+        max-height: 65vh;
+    }
+}
