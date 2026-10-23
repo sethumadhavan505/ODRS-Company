@@ -11,6 +11,40 @@
 
 <body>
 
+<!-- ODRS OFFICE CLOSED NOTICE -->
+<script>
+  const SHOW_ODRS_CLOSED_NOTICE = false;
+</script>
+
+<div id="odrsClosedNotice" class="odrs-closed-notice"
+     style="display: none;">
+
+  <div class="odrs-closed-content">
+    <h1>ODRS OFFICE CLOSED</h1>
+
+    <p>Our office is temporarily closed.</p>
+
+    <img
+      src="ODRS Office Closed Sign.png"
+      alt="ODRS Office Closed Sign"
+      class="odrs-closed-image"
+    >
+
+    <p class="odrs-closed-message">
+      Thank you for your understanding.
+    </p>
+  </div>
+
+</div>
+
+<script>
+  if (SHOW_ODRS_CLOSED_NOTICE) {
+    document.getElementById("odrsClosedNotice").style.display = "flex";
+  }
+</script>
+<!-- END -->
+    
+    
 <header class="top-bar">
     <div class="logo-and-menu">
         <button id="hamburger-btn" class="menu-toggle-btn">
