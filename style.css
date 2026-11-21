@@ -660,3 +660,79 @@ input[type="password"]::-ms-clear {
             font-size: 13px;
         }
     }
+
+
+/* Google sign-in option on the registration panel */
+.auth-wrapper {
+    height: 620px;
+}
+
+.google-auth-block {
+    width: 100%;
+    margin-top: 16px;
+}
+
+.google-signin-button {
+    width: 100%;
+    min-height: 52px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    padding: 10px 14px;
+    border-radius: 12px;
+    background: #fff;
+    color: #172033;
+    border: 1px solid #d6deea;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform .2s ease, box-shadow .2s ease;
+}
+
+.google-signin-button:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 16px rgba(0, 212, 255, .18);
+}
+
+.google-logo {
+    font-family: Arial, sans-serif;
+    font-weight: 800;
+    font-size: 21px;
+    color: #4285f4;
+}
+
+.auth-divider {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 14px 0 0;
+    color: #aeb8cc;
+    font-size: 12px;
+    white-space: nowrap;
+}
+
+.auth-divider::before,
+.auth-divider::after {
+    content: "";
+    height: 1px;
+    background: rgba(174, 184, 204, .45);
+    flex: 1;
+}
+
+.auth-divider span {
+    color: #aeb8cc;
+}
+
+@media (max-width: 768px) {
+    .auth-wrapper {
+        height: auto;
+        min-height: 620px;
+    }
+    .google-auth-block {
+        margin-top: 12px;
+    }
+    .google-signin-button {
+        min-height: 48px;
+    }
+}
