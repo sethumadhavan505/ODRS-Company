@@ -68,6 +68,14 @@
                     <label>Email</label>
                     <i class="fa-solid fa-envelope"></i>
                 </div>
+                
+                <div class="google-auth-block slide-element">
+                    <button type="button" class="google-signin-button" onclick="googleRegisterNotice()">
+                        <span class="google-logo" aria-hidden="true">G</span>
+                        Continue with Google
+                    </button>
+                    <div class="auth-divider"><span>or register with email</span></div>
+                </div>
 
                 <div class="field-wrapper slide-element password-field">
                     <input type="password" id="regPassword" required>
@@ -219,5 +227,10 @@ document.addEventListener("keydown", function(e) {
 });
 </script>
 
+<script>
+function googleRegisterNotice() {
+    alert("Google sign-in is not connected to this registration form yet.");
+}
+</script>
 </body>
 </html>
