@@ -69,7 +69,7 @@
               <label class="auth-field-label" for="regUsername">Username</label>
               <div class="auth-input-wrap"><i class="fa-regular fa-user"></i><input type="text" id="regUsername" placeholder="Your name" autocomplete="name" value="" required></div>
               <label class="auth-field-label" for="regEmail">Email address</label>
-              <div class="auth-input-wrap"><i class="fa-regular fa-envelope"></i><input type="email" id="regEmail" placeholder="you@odrs.com" autocomplete="email" required></div>
+              <div class="auth-input-wrap"><i class="fa-regular fa-envelope"></i><input type="email" id="regEmail" placeholder="you@odrs.com" autocomplete="email" value="" required></div>
               <label class="auth-field-label" for="regPassword">Password</label>
               <div class="auth-input-wrap"><i class="fa-solid fa-lock"></i><input type="password" id="regPassword" placeholder="Create a password" autocomplete="new-password" value="" required><button type="button" class="password-toggle auth-eye" onclick="togglePassword('regPassword', this)" aria-label="Show password"><i class="fa-regular fa-eye"></i></button></div>
               <label class="remember-option signup-remember"><input type="checkbox" id="signupRemember"><span>Remember me on this device</span></label>
@@ -81,58 +81,6 @@
       </section>
     </main>
 
-        <div class="credentials-panel signup">
-            <h2 class="slide-element">Register</h2>
-            <form action="#">
-                <div class="field-wrapper slide-element">
-                    <input type="text" id="regUsername" required>
-                    <label>Username</label>
-                    <i class="fa-solid fa-user"></i>
-                </div>
-
-                <div class="field-wrapper slide-element">
-                    <input type="email" id="regEmail" required>
-                    <label>Email</label>
-                    <i class="fa-solid fa-envelope"></i>
-                </div>
-                
-                <div class="google-auth-block slide-element">
-                    <button type="button" class="google-signin-button" onclick="googleRegisterNotice()">
-                        <span class="google-logo" aria-hidden="true">G</span>
-                        Continue with Google
-                    </button>
-                    <div class="auth-divider"><span>or register with email</span></div>
-                </div>
-
-                <div class="field-wrapper slide-element password-field">
-                    <input type="password" id="regPassword" required>
-                    <label>Password</label>
-
-                    <button
-                        type="button"
-                        class="password-toggle"
-                        onclick="togglePassword('regPassword', this)"
-                        aria-label="Show password">
-                        <i class="fa-solid fa-eye-slash"></i>
-                    </button>
-                </div>
-
-                <div class="field-wrapper slide-element">
-                    <button type="button" class="submit-button" onclick="register()">Register</button>
-                </div>
-
-                <div class="switch-link slide-element">
-                    <p>Already have an account? <br> 
-                        <a href="#" class="login-trigger">Sign In</a>
-                    </p>
-                </div>
-            </form>
-        </div>
-        <div class="footer">
-            <p>Made with ❤️ by ODRS TEAM</p>
-        </div>
-    
-    <script src="style.js"></script>
 
 <!-- Warning Popup -->
 <div id="warningPopup" class="warning-popup">
