@@ -1113,3 +1113,119 @@ body {
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; }
 }
+
+
+/* Registration desktop/laptop fit only — leave logo, branding and other views unchanged */
+@media (min-width: 1101px) {
+  .odrs-auth-shell {
+    height: auto;
+    min-height: 0;
+    min-height: min(820px, calc(100svh - 56px));
+    grid-template-columns: minmax(0, 1.08fr) minmax(430px, .92fr);
+    gap: clamp(28px, 3vw, 48px);
+    align-items: center;
+  }
+
+  .odrs-auth-card {
+    max-width: 560px;
+    padding: clamp(28px, 2.2vw, 36px);
+  }
+
+  .odrs-auth-card-inner {
+    min-height: 0;
+  }
+
+  .odrs-auth-card .credentials-panel.signup {
+    max-height: calc(100svh - 128px);
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255,255,255,.35) transparent;
+  }
+
+  .odrs-auth-card .credentials-panel.signup::-webkit-scrollbar {
+    width: 5px;
+  }
+
+  .odrs-auth-card .credentials-panel.signup::-webkit-scrollbar-thumb {
+    background: rgba(255,255,255,.35);
+    border-radius: 10px;
+  }
+
+  .odrs-auth-card .auth-title {
+    font-size: clamp(29px, 2.3vw, 36px);
+  }
+
+  .auth-subtitle {
+    margin: 8px 0 18px;
+    font-size: 15px;
+  }
+
+  .auth-field-label {
+    margin: 12px 0 6px;
+    font-size: 13px;
+  }
+
+  .auth-input-wrap {
+    min-height: 48px;
+    padding: 0 13px;
+  }
+
+  .auth-input-wrap input {
+    height: 46px;
+    font-size: 14px;
+  }
+
+  .auth-primary-button,
+  .auth-google-button {
+    min-height: 48px;
+    font-size: 15px;
+    border-radius: 12px;
+  }
+
+  .auth-or {
+    margin: 17px 0 13px;
+    font-size: 12px;
+  }
+
+  .auth-switch-copy {
+    margin-top: 18px;
+    font-size: 13px;
+  }
+
+  .odrs-auth-card .signup-remember {
+    margin: 12px 0 14px;
+  }
+}
+
+@media (min-width: 1101px) and (max-height: 800px) {
+  .odrs-auth-shell {
+    min-height: 0;
+    height: calc(100svh - 36px);
+    gap: 30px;
+  }
+
+  .odrs-auth-card {
+    padding: 24px 30px;
+  }
+
+  .odrs-auth-card .auth-title {
+    font-size: 29px;
+  }
+
+  .auth-subtitle {
+    margin-bottom: 12px;
+    font-size: 14px;
+  }
+
+  .auth-field-label {
+    margin-top: 9px;
+  }
+
+  .auth-or {
+    margin: 12px 0 10px;
+  }
+
+  .auth-switch-copy {
+    margin-top: 13px;
+  }
+}
