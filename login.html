@@ -227,10 +227,42 @@ document.addEventListener("keydown", function(e) {
 });
 </script>
 
-<script>
-function googleRegisterNotice() {
-    alert("Google sign-in is not connected to this registration form yet.");
-}
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
+import { getAuth, GoogleAuthProvider, signInWithPopup } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyAd3r79qIm7SJWjUXrol5K6fuU2_gpseew",
+  authDomain: "odrs-login.firebaseapp.com",
+  projectId: "odrs-login",
+  storageBucket: "odrs-login.firebasestorage.app",
+  messagingSenderId: "948294188520",
+  appId: "1:948294188520:web:721377ae39f5f4e214785d",
+  measurementId: "G-FYRJJG7TVR"
+};
+
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+const googleProvider = new GoogleAuthProvider();
+
+window.googleRegisterNotice = async function () {
+    const button = document.querySelector(".google-signin-button");
+    button.disabled = true;
+    try {
+        const result = await signInWithPopup(auth, googleProvider);
+        const user = result.user;
+        const usernameField = document.getElementById("regUsername");
+        const emailField = document.getElementById("regEmail");
+        if (usernameField && user.displayName) usernameField.value = user.displayName;
+        if (emailField && user.email) emailField.value = user.email;
+        alert("Google account connected successfully. Complete your registration.");
+    } catch (error) {
+        console.error("Google sign-in error:", error);
+        alert(error.message || "Google sign-in failed. Please try again.");
+    } finally {
+        button.disabled = false;
+    }
+};
 </script>
 </body>
 </html>
