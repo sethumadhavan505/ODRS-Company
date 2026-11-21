@@ -1229,3 +1229,79 @@ body {
     margin-top: 13px;
   }
 }
+
+
+/* Keep the ODRS sign-in view fixed and centered in the viewport.
+   Do not alter logo, branding, colors, typography, or auth controls. */
+@media (min-width: 761px) {
+  html,
+  body {
+    width: 100%;
+    min-width: 0;
+    min-height: 100%;
+    overflow-x: clip;
+  }
+
+  body {
+    height: 100vh;
+    height: 100svh;
+    padding: 18px clamp(18px, 3vw, 42px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow-y: hidden;
+  }
+
+  .odrs-auth-shell {
+    flex: 0 1 auto;
+    width: min(1420px, 100%);
+    height: auto;
+    min-height: 0;
+    margin: 0 auto;
+    align-self: center;
+  }
+
+  .odrs-auth-shell ~ .footer {
+    flex: 0 0 auto;
+    width: 100%;
+    margin: 10px auto 0;
+    padding: 0 10px;
+    line-height: 1.35;
+    text-align: center;
+  }
+
+  .odrs-auth-card {
+    min-width: 0;
+  }
+
+  .odrs-auth-card .credentials-panel.signup {
+    max-height: calc(100svh - 190px);
+    overflow-y: auto;
+    overscroll-behavior: contain;
+  }
+}
+
+@media (min-width: 761px) and (max-height: 760px) {
+  body {
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+
+  .odrs-auth-shell {
+    gap: clamp(20px, 2.5vw, 36px);
+  }
+
+  .odrs-auth-card {
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
+
+  .odrs-auth-card .credentials-panel.signup {
+    max-height: calc(100svh - 130px);
+  }
+
+  .odrs-auth-shell ~ .footer {
+    margin-top: 6px;
+  }
+}
