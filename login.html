@@ -404,9 +404,10 @@ window.login = async function () {
 };
 
 window.googleRegisterNotice = async function () {
-  const button = document.querySelector(".google-signin-button");
+  const button = document.querySelector(".auth-register-google");
   button.disabled = true;
   try {
+    await applyRememberPreference();
     const result = await signInWithPopup(auth, googleProvider);
     saveUserAndGoHome(result.user);
   } catch (error) {
@@ -414,7 +415,25 @@ window.googleRegisterNotice = async function () {
       "auth/popup-closed-by-user": "Google sign-in was cancelled.",
       "auth/unauthorized-domain": "This website domain is not authorized in Firebase Authentication."
     };
-    alert(messages[error.code] || error.message || "Google sign-in failed.");
+    showAuthStatus(messages[error.code] || error.message || "Google sign-in failed.", true);
+  } finally {
+    button.disabled = false;
+  }
+};
+
+window.googleLogin = async function () {
+  const button = document.querySelector(".signin .auth-google-button");
+  button.disabled = true;
+  try {
+    await applyRememberPreference();
+    const result = await signInWithPopup(auth, googleProvider);
+    saveUserAndGoHome(result.user);
+  } catch (error) {
+    const messages = {
+      "auth/popup-closed-by-user": "Google sign-in was cancelled.",
+      "auth/unauthorized-domain": "This website domain is not authorized in Firebase Authentication."
+    };
+    showAuthStatus(messages[error.code] || error.message || "Google sign-in failed.", true);
   } finally {
     button.disabled = false;
   }
