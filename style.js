@@ -1,18 +1,17 @@
 const authWrapper = document.querySelector('.auth-wrapper');
 const loginTrigger = document.querySelector('.login-trigger');
 const registerTrigger = document.querySelector('.register-trigger');
+const authCardInner = document.querySelector('.odrs-auth-card-inner');
 
-registerTrigger.addEventListener('click', (e) => {
-    e.preventDefault();
-    authWrapper.classList.add('toggled');
+registerTrigger?.addEventListener('click', (event) => {
+    event.preventDefault();
+    authCardInner?.classList.add('signup-mode');
 });
 
-loginTrigger.addEventListener('click', (e) => {
-    e.preventDefault();
-    authWrapper.classList.remove('toggled');
+loginTrigger?.addEventListener('click', (event) => {
+    event.preventDefault();
+    authCardInner?.classList.remove('signup-mode');
 });
-
-/* Firebase handles login submission; no localStorage password checks are used. */
 
 /* ===== PASSWORD VISIBILITY TOGGLE ===== */
 
