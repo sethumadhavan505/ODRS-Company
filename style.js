@@ -6,11 +6,13 @@ const authCardInner = document.querySelector('.odrs-auth-card-inner');
 registerTrigger?.addEventListener('click', (event) => {
     event.preventDefault();
     authCardInner?.classList.add('signup-mode');
+    document.querySelector('.odrs-auth-card')?.scrollIntoView({ behavior: 'smooth', block: 'center' });
 });
 
 loginTrigger?.addEventListener('click', (event) => {
     event.preventDefault();
     authCardInner?.classList.remove('signup-mode');
+    document.querySelector('.odrs-auth-card')?.scrollIntoView({ behavior: 'smooth', block: 'center' });
 });
 
 /* ===== PASSWORD VISIBILITY TOGGLE ===== */
