@@ -226,7 +226,7 @@ document.getElementById("forgotPasswordBtn")?.addEventListener("click", async ()
   }
   try {
     await sendPasswordResetEmail(auth, email);
-    showAuthStatus("Password reset email sent. Check your inbox.");
+    openResetEmailModal();
   } catch (error) {
     showAuthStatus(error.message || "Could not send password reset email.", true);
   }
@@ -337,6 +337,36 @@ window.googleLogin = async function () {
     button.disabled = false;
   }
 };
+</script>
+
+<!-- Password reset confirmation modal -->
+<div id="resetEmailModal" class="reset-email-modal" role="dialog" aria-modal="true" aria-labelledby="resetEmailTitle">
+  <div class="reset-email-modal-card">
+    <button type="button" class="reset-email-close" aria-label="Close" onclick="closeResetEmailModal()">&times;</button>
+    <div class="reset-email-success-icon"><i class="fa-solid fa-check"></i></div>
+    <h2 id="resetEmailTitle">Check Your Email!</h2>
+    <p>We've sent a password reset link to your registered email address. Please check your inbox (and spam folder) to continue.</p>
+    <button type="button" class="reset-email-ok" onclick="closeResetEmailModal()">OK</button>
+  </div>
+</div>
+<style>
+.reset-email-modal{display:none;position:fixed;inset:0;z-index:100000;background:rgba(3,10,24,.68);backdrop-filter:blur(5px);align-items:center;justify-content:center;padding:20px}
+.reset-email-modal.show{display:flex}
+.reset-email-modal-card{position:relative;width:min(100%,540px);padding:38px 34px 32px;border-radius:28px;background:#fff;color:#0b2239;text-align:center;box-shadow:0 25px 80px rgba(0,0,0,.35);animation:resetModalIn .22s ease-out}
+.reset-email-modal-card h2{margin:14px 0 12px;color:#0b2239;font-size:clamp(24px,3vw,32px);font-weight:800}
+.reset-email-modal-card p{margin:0 auto 28px;max-width:430px;color:#536174;font-size:16px;line-height:1.65}
+.reset-email-success-icon{width:104px;height:104px;margin:0 auto;border-radius:50%;display:grid;place-items:center;background:#dcfce7;color:#16a34a;font-size:44px}
+.reset-email-close{position:absolute;right:18px;top:14px;border:0;background:transparent;color:#334155;font-size:30px;line-height:1;cursor:pointer}
+.reset-email-ok{width:100%;min-height:58px;border:0;border-radius:16px;background:#ff332d;color:#fff;font-size:16px;font-weight:800;cursor:pointer;transition:transform .15s ease,box-shadow .15s ease}
+.reset-email-ok:hover{transform:translateY(-1px);box-shadow:0 8px 22px rgba(255,51,45,.28)}
+@keyframes resetModalIn{from{opacity:0;transform:translateY(10px) scale(.98)}to{opacity:1;transform:translateY(0) scale(1)}}
+@media(max-width:480px){.reset-email-modal-card{padding:32px 22px 24px;border-radius:22px}.reset-email-modal-card p{font-size:14px}}
+</style>
+<script>
+function openResetEmailModal(){const modal=document.getElementById('resetEmailModal');if(modal){modal.classList.add('show');document.body.style.overflow='hidden';}}
+function closeResetEmailModal(){const modal=document.getElementById('resetEmailModal');if(modal){modal.classList.remove('show');document.body.style.overflow='';}}
+document.getElementById('resetEmailModal')?.addEventListener('click',function(e){if(e.target===this)closeResetEmailModal();});
+document.addEventListener('keydown',function(e){if(e.key==='Escape')closeResetEmailModal();});
 </script>
 </body>
 </html>
