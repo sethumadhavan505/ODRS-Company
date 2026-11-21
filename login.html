@@ -33,7 +33,7 @@
       </section>
       <section class="odrs-auth-card" aria-label="Account access">
         <div class="odrs-auth-card-inner">
-          <div class="odrs-mobile-brand"><img src="logo.png" alt="ODRS logo"></div>
+          
           <div class="credentials-panel signin">
             <h2 class="auth-title">Sign In</h2>
             <p class="auth-subtitle">Good to see you again.</p>
@@ -41,16 +41,16 @@
               <label class="auth-field-label" for="loginEmail">Email address</label>
               <div class="auth-input-wrap">
                 <i class="fa-regular fa-envelope"></i>
-                <input type="email" id="loginEmail" placeholder="you@odrs.com" autocomplete="email" required>
+                <input type="email" id="loginEmail" placeholder="Enter your email" autocomplete="email" value="" required>
               </div>
               <label class="auth-field-label" for="loginPassword">Password</label>
               <div class="auth-input-wrap">
                 <i class="fa-solid fa-lock"></i>
-                <input type="password" id="loginPassword" placeholder="Enter your password" autocomplete="current-password" required>
+                <input type="password" id="loginPassword" placeholder="Enter your password" autocomplete="current-password" value="" required>
                 <button type="button" class="password-toggle auth-eye" onclick="togglePassword('loginPassword', this)" aria-label="Show password"><i class="fa-regular fa-eye"></i></button>
               </div>
               <div class="auth-options">
-                <label class="remember-option"><input type="checkbox" id="rememberMe" checked><span>Remember me</span></label>
+                <label class="remember-option"><input type="checkbox" id="rememberMe" ><span>Remember me</span></label>
                 <button type="button" class="forgot-password" id="forgotPasswordBtn">Forgot password?</button>
               </div>
               <button type="button" class="auth-primary-button" onclick="login()">Sign In <i class="fa-solid fa-arrow-right"></i></button>
@@ -67,11 +67,11 @@
             <div class="auth-or"><span>or register with email</span></div>
             <form action="#" novalidate>
               <label class="auth-field-label" for="regUsername">Username</label>
-              <div class="auth-input-wrap"><i class="fa-regular fa-user"></i><input type="text" id="regUsername" placeholder="Your name" autocomplete="name" required></div>
+              <div class="auth-input-wrap"><i class="fa-regular fa-user"></i><input type="text" id="regUsername" placeholder="Your name" autocomplete="name" value="" required></div>
               <label class="auth-field-label" for="regEmail">Email address</label>
               <div class="auth-input-wrap"><i class="fa-regular fa-envelope"></i><input type="email" id="regEmail" placeholder="you@odrs.com" autocomplete="email" required></div>
               <label class="auth-field-label" for="regPassword">Password</label>
-              <div class="auth-input-wrap"><i class="fa-solid fa-lock"></i><input type="password" id="regPassword" placeholder="Create a password" autocomplete="new-password" required><button type="button" class="password-toggle auth-eye" onclick="togglePassword('regPassword', this)" aria-label="Show password"><i class="fa-regular fa-eye"></i></button></div>
+              <div class="auth-input-wrap"><i class="fa-solid fa-lock"></i><input type="password" id="regPassword" placeholder="Create a password" autocomplete="new-password" value="" required><button type="button" class="password-toggle auth-eye" onclick="togglePassword('regPassword', this)" aria-label="Show password"><i class="fa-regular fa-eye"></i></button></div>
               <label class="remember-option signup-remember"><input type="checkbox" id="signupRemember"><span>Remember me on this device</span></label>
               <button type="button" class="auth-primary-button" onclick="register()">Create Account <i class="fa-solid fa-arrow-right"></i></button>
             </form>
@@ -81,9 +81,7 @@
       </section>
     </main>
 
-    <footer class="footer">
-      <p>Made with ❤️ by ODRS TEAM</p>
-    </footer>
+    
 
     <div id="authStatus" class="auth-status" role="status" aria-live="polite"></div>
 
