@@ -12,23 +12,7 @@ loginTrigger.addEventListener('click', (e) => {
     authWrapper.classList.remove('toggled');
 });
 
-/* ===== LOGIN REDIRECT ===== */
-const loginForm = document.querySelector('.signin form');
-
-loginForm.addEventListener('submit', function(e) {
-    e.preventDefault();
-
-    // Simple validation (you can change later)
-    const username = loginForm.querySelector('input[type="text"]').value;
-    const password = loginForm.querySelector('input[type="password"]').value;
-
-    if(username !== "" && password !== ""){
-        // Redirect to Home Page
-        window.location.href = "home.html";
-    } else {
-        alert("Please enter username and password");
-    }
-});
+/* Firebase handles login submission; no localStorage password checks are used. */
 
 /* ===== PASSWORD VISIBILITY TOGGLE ===== */
 
