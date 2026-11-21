@@ -1434,3 +1434,96 @@ body {
     font-size: clamp(32px, 3.7vw, 50px);
   }
 }
+
+
+/* Left brand column: match the user's reference composition only.
+   Keep the authentication card and its contents unchanged. */
+@media (min-width: 1101px) {
+  .odrs-auth-shell {
+    grid-template-columns: minmax(0, 1.12fr) minmax(390px, .88fr);
+    gap: clamp(20px, 2.8vw, 48px);
+  }
+
+  .odrs-brand-panel {
+    width: 100%;
+    max-width: none;
+    min-width: 0;
+    padding: 0 clamp(40px, 5vw, 92px);
+    align-items: flex-start;
+    justify-content: center;
+  }
+
+  .odrs-auth-brand {
+    display: inline-flex;
+    align-items: center;
+    margin-bottom: clamp(20px, 3.5vh, 38px);
+  }
+
+  .odrs-auth-brand img {
+    width: clamp(205px, 20vw, 290px);
+    height: auto;
+    margin-bottom: 0;
+  }
+
+  .odrs-brand-copy {
+    width: 100%;
+    max-width: 850px;
+  }
+
+  .odrs-eyebrow {
+    margin: 0 0 clamp(18px, 2.5vh, 26px);
+    font-size: clamp(14px, 1.1vw, 18px);
+    letter-spacing: .075em;
+  }
+
+  .odrs-brand-copy h1 {
+    max-width: 850px;
+    font-size: clamp(48px, 4.7vw, 82px);
+    line-height: 1.1;
+    letter-spacing: -.045em;
+    text-wrap: pretty;
+  }
+
+  .odrs-feature-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    margin-top: clamp(28px, 4vh, 44px);
+  }
+
+  .odrs-feature-pills span {
+    padding: 12px 17px;
+    font-size: clamp(13px, 1vw, 16px);
+    white-space: nowrap;
+  }
+}
+
+/* Laptop width: preserve left column proportions without crowding the auth card. */
+@media (min-width: 1101px) and (max-width: 1450px) {
+  .odrs-auth-shell {
+    grid-template-columns: minmax(0, 1.05fr) minmax(390px, .95fr);
+    gap: clamp(18px, 2vw, 30px);
+  }
+
+  .odrs-brand-panel {
+    padding-inline: clamp(24px, 3vw, 44px);
+  }
+
+  .odrs-auth-brand img {
+    width: clamp(185px, 18vw, 230px);
+  }
+
+  .odrs-brand-copy h1 {
+    font-size: clamp(40px, 4.1vw, 58px);
+  }
+
+  .odrs-feature-pills {
+    gap: 9px;
+    margin-top: 24px;
+  }
+
+  .odrs-feature-pills span {
+    padding: 10px 12px;
+    font-size: 12px;
+  }
+}
