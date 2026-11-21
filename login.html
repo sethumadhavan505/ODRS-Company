@@ -20,9 +20,9 @@
             <h2 class="slide-element">Login</h2>
             <form action="#">
                 <div class="field-wrapper slide-element">
-                    <input type="text" id="loginUsername" required>
-                    <label>Username</label>
-                    <i class="fa-solid fa-user"></i>
+                    <input type="email" id="loginEmail" required autocomplete="email">
+                    <label>Email</label>
+                    <i class="fa-solid fa-envelope"></i>
                 </div>
 
                 <div class="field-wrapper slide-element password-field">
@@ -112,40 +112,7 @@
     </div>
 
     <script src="style.js"></script>
-<script>
-// REGISTER FUNCTION
-function register() {
-  let username = document.getElementById("regUsername").value;
-  let email = document.getElementById("regEmail").value;
-  let password = document.getElementById("regPassword").value;
-
-  localStorage.setItem("regUsername", username);
-  localStorage.setItem("regEmail", email);
-  localStorage.setItem("regPassword", password);
-
-  alert("Registered Successfully ✅");
-}
-
-// LOGIN FUNCTION
-function login() {
-  let username = document.getElementById("loginUsername").value;
-  let password = document.getElementById("loginPassword").value;
-
-  let storedUser = localStorage.getItem("regUsername");
-  let storedPass = localStorage.getItem("regPassword");
-
-  if (username === storedUser && password === storedPass) {
-
-    localStorage.setItem("username", storedUser);
-    localStorage.setItem("email", localStorage.getItem("regEmail"));
-
-    window.location.href = "home.html";
-
-  } else {
-    alert("Invalid Username or Password ❌");
-  }
-}
-</script>
+>
 
 <!-- Warning Popup -->
 <div id="warningPopup" class="warning-popup">
@@ -229,7 +196,11 @@ document.addEventListener("keydown", function(e) {
 
 <script type="module">
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
-import { getAuth, GoogleAuthProvider, signInWithPopup } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
+import {
+  getAuth, GoogleAuthProvider, signInWithPopup,
+  createUserWithEmailAndPassword, signInWithEmailAndPassword,
+  updateProfile, onAuthStateChanged
+} from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
 
 const firebaseConfig = {
   apiKey: "AIzaSyAd3r79qIm7SJWjUXrol5K6fuU2_gpseew",
@@ -245,23 +216,89 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const googleProvider = new GoogleAuthProvider();
 
+function saveUserAndGoHome(user, fallbackName = "") {
+  localStorage.setItem("username", user.displayName || fallbackName || user.email?.split("@")[0] || "User");
+  localStorage.setItem("email", user.email || "");
+  window.location.href = "home.html";
+}
+
+onAuthStateChanged(auth, (user) => {
+  if (user && window.location.pathname.endsWith("login.html")) {
+    // Keep the sign-up/login page visible unless a user has just signed in.
+  }
+});
+
+window.register = async function () {
+  const username = document.getElementById("regUsername").value.trim();
+  const email = document.getElementById("regEmail").value.trim();
+  const password = document.getElementById("regPassword").value;
+  if (!username || !email || !password) {
+    alert("Please fill in all registration fields.");
+    return;
+  }
+  if (password.length < 6) {
+    alert("Password must be at least 6 characters.");
+    return;
+  }
+  const button = document.querySelector(".signup .submit-button");
+  button.disabled = true;
+  try {
+    const credential = await createUserWithEmailAndPassword(auth, email, password);
+    await updateProfile(credential.user, { displayName: username });
+    saveUserAndGoHome(credential.user, username);
+  } catch (error) {
+    const messages = {
+      "auth/email-already-in-use": "This email already has an account. Please sign in.",
+      "auth/invalid-email": "Please enter a valid email address.",
+      "auth/weak-password": "Password is too weak. Use at least 6 characters."
+    };
+    alert(messages[error.code] || error.message || "Registration failed.");
+  } finally {
+    button.disabled = false;
+  }
+};
+
+window.login = async function () {
+  const email = document.getElementById("loginEmail").value.trim();
+  const password = document.getElementById("loginPassword").value;
+  if (!email || !password) {
+    alert("Please enter your email and password.");
+    return;
+  }
+  const button = document.querySelector(".signin .submit-button");
+  button.disabled = true;
+  try {
+    const credential = await signInWithEmailAndPassword(auth, email, password);
+    saveUserAndGoHome(credential.user);
+  } catch (error) {
+    const messages = {
+      "auth/invalid-credential": "Email or password is incorrect.",
+      "auth/user-not-found": "No account found for this email.",
+      "auth/wrong-password": "Incorrect password.",
+      "auth/invalid-email": "Please enter a valid email address.",
+      "auth/too-many-requests": "Too many attempts. Please try again later."
+    };
+    alert(messages[error.code] || error.message || "Login failed.");
+  } finally {
+    button.disabled = false;
+  }
+};
+
 window.googleRegisterNotice = async function () {
-    const button = document.querySelector(".google-signin-button");
-    button.disabled = true;
-    try {
-        const result = await signInWithPopup(auth, googleProvider);
-        const user = result.user;
-        const usernameField = document.getElementById("regUsername");
-        const emailField = document.getElementById("regEmail");
-        if (usernameField && user.displayName) usernameField.value = user.displayName;
-        if (emailField && user.email) emailField.value = user.email;
-        alert("Google account connected successfully. Complete your registration.");
-    } catch (error) {
-        console.error("Google sign-in error:", error);
-        alert(error.message || "Google sign-in failed. Please try again.");
-    } finally {
-        button.disabled = false;
-    }
+  const button = document.querySelector(".google-signin-button");
+  button.disabled = true;
+  try {
+    const result = await signInWithPopup(auth, googleProvider);
+    saveUserAndGoHome(result.user);
+  } catch (error) {
+    const messages = {
+      "auth/popup-closed-by-user": "Google sign-in was cancelled.",
+      "auth/unauthorized-domain": "This website domain is not authorized in Firebase Authentication."
+    };
+    alert(messages[error.code] || error.message || "Google sign-in failed.");
+  } finally {
+    button.disabled = false;
+  }
 };
 </script>
 </body>
