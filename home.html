@@ -484,18 +484,38 @@ if (mobileToggle) {
 
 
 <script>
+const flipCardTimers = new WeakMap();
+
 document.querySelectorAll('.flip-card').forEach(card => {
     card.addEventListener('click', function () {
+        // Stop any previous auto-close timer for this card.
+        const existingTimer = flipCardTimers.get(this);
+        if (existingTimer) clearTimeout(existingTimer);
 
-        // Close all other cards
+        // Close all other cards and cancel their timers.
         document.querySelectorAll('.flip-card').forEach(otherCard => {
             if (otherCard !== this) {
                 otherCard.classList.remove('flipped');
+                const otherTimer = flipCardTimers.get(otherCard);
+                if (otherTimer) clearTimeout(otherTimer);
+                flipCardTimers.delete(otherCard);
             }
         });
 
-        // Toggle current card
-        this.classList.toggle('flipped');
+        // Clicking an open card closes it immediately.
+        if (this.classList.contains('flipped')) {
+            this.classList.remove('flipped');
+            flipCardTimers.delete(this);
+            return;
+        }
+
+        // Open this card, then close it automatically after 5 seconds.
+        this.classList.add('flipped');
+        const timer = setTimeout(() => {
+            this.classList.remove('flipped');
+            flipCardTimers.delete(this);
+        }, 5000);
+        flipCardTimers.set(this, timer);
     });
 });
 </script>
