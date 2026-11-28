@@ -63,9 +63,14 @@
             </label>
         </div>
 
-        <div class="visitor-access-label" aria-label="Public visitor access">
-            <i class="fa-solid fa-user-check"></i>
-            <span>Guest Access</span>
+        <!-- ACCOUNT ACCESS / PROFILE DROPDOWN -->
+        <div class="profile-menu" id="profileMenu" role="button" tabindex="0" aria-label="Account access">
+            <i class="fa-solid fa-user"></i>
+            <div class="dropdown" id="profileDropdown">
+                <p>UserName: <span id="userName">Guest</span></p>
+                <p>Email: <span id="userEmail">Public visitor</span></p>
+                <a href="https://odrs-company-io.vercel.app/" onclick="return goToLandingPage(event)">Sign Out</a>
+            </div>
         </div>
 
     </div>
@@ -129,7 +134,10 @@
             </div>
 
             
-        <div class="visitor-note"><i class="fa-solid fa-circle-check"></i> You are browsing as a guest</div>
+        <a href="https://odrs-company-io.vercel.app/" class="logout-btn" onclick="return goToLandingPage(event)">
+            <i class="fa-solid fa-right-from-bracket"></i>
+            Back to Landing Page
+        </a>
     </div>
 </div>
     <!-- Close left-panel -->
@@ -361,13 +369,39 @@
 </div>
 
 <script>
-/* Public visitor access: no sign-in, sign-out, or redirect actions. */
-const visitorName = "Guest";
-const visitorEmail = "Public visitor";
+/* Public account display. Both exit actions return to the landing page. */
+const visitorName = localStorage.getItem("username") || "Guest";
+const visitorEmail = localStorage.getItem("email") || "Public visitor";
 document.getElementById("userName").textContent = visitorName;
 document.getElementById("userEmail").textContent = visitorEmail;
 document.getElementById("sidebarUserName").textContent = visitorName;
 document.getElementById("sidebarUserEmail").textContent = visitorEmail;
+
+function goToLandingPage(event) {
+    if (event) event.preventDefault();
+    window.location.href = "https://odrs-company-io.vercel.app/";
+    return false;
+}
+</script>
+
+<script>
+const profileMenu = document.getElementById("profileMenu");
+const profileDropdown = document.getElementById("profileDropdown");
+
+profileMenu.addEventListener("click", (event) => {
+    if (profileDropdown.contains(event.target)) return;
+    event.stopPropagation();
+    profileDropdown.classList.toggle("show");
+});
+profileMenu.addEventListener("keydown", (event) => {
+    if (event.key === "Enter" || event.key === " ") {
+        event.preventDefault();
+        profileDropdown.classList.toggle("show");
+    }
+});
+document.addEventListener("click", (event) => {
+    if (!profileMenu.contains(event.target)) profileDropdown.classList.remove("show");
+});
 </script>
 
 <script>
