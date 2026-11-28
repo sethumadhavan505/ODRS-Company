@@ -79,7 +79,7 @@
             <div class="dropdown">
                 <p>UserName: <span id="userName"></span></p>
                 <p>Email: <span id="userEmail"></span></p>
-                <a href="login.html" onclick="logout(event)">Sign Out</a>
+                <a href="https://odrs-company-io.vercel.app/" onclick="logout(event)">Back to Website</a>
             </div>
         </div>
 
@@ -144,7 +144,7 @@
             </div>
 
             
-        <a href="/" class="logout-btn" onclick="logout()">
+        <a href="https://odrs-company-io.vercel.app/" class="logout-btn" onclick="logout(event)">
             <i class="fa-solid fa-right-from-bracket"></i>
             Logout
         </a>
@@ -378,49 +378,19 @@
     </div>
 </div>
 
-<script type="module">
-import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
-import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
+<script>
+/* Public visitor access: no sign-in is required to view ODRS offers. */
+const visitorName = localStorage.getItem("username") || "Guest";
+const visitorEmail = localStorage.getItem("email") || "Public visitor";
 
-const firebaseConfig = {
-  apiKey: "AIzaSyAd3r79qIm7SJWjUXrol5K6fuU2_gpseew",
-  authDomain: "odrs-login.firebaseapp.com",
-  projectId: "odrs-login",
-  storageBucket: "odrs-login.firebasestorage.app",
-  messagingSenderId: "948294188520",
-  appId: "1:948294188520:web:721377ae39f5f4e214785d",
-  measurementId: "G-FYRJJG7TVR"
-};
+document.getElementById("userName").textContent = visitorName;
+document.getElementById("userEmail").textContent = visitorEmail;
+document.getElementById("sidebarUserName").textContent = visitorName;
+document.getElementById("sidebarUserEmail").textContent = visitorEmail;
 
-const app = initializeApp(firebaseConfig);
-const auth = getAuth(app);
-
-onAuthStateChanged(auth, (user) => {
-  if (!user) {
-    window.location.href = "login.html";
-    return;
-  }
-  const username = user.displayName || user.email?.split("@")[0] || "User";
-  const email = user.email || "";
-  localStorage.setItem("username", username);
-  localStorage.setItem("email", email);
-  document.getElementById("userName").textContent = username;
-  document.getElementById("userEmail").textContent = email;
-  document.getElementById("sidebarUserName").textContent = username;
-  document.getElementById("sidebarUserEmail").textContent = email;
-});
-
-window.logout = async function(event) {
+window.logout = function(event) {
   if (event) event.preventDefault();
-  try {
-    await signOut(auth);
-    localStorage.removeItem("username");
-    localStorage.removeItem("email");
-    window.location.href = "login.html";
-  } catch (error) {
-    console.error("Logout error:", error);
-    alert("Unable to sign out. Please try again.");
-  }
+  window.location.href = "https://odrs-company-io.vercel.app/";
 };
 </script>
 
