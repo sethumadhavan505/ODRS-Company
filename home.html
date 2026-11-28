@@ -55,17 +55,7 @@
         </div>
     </div>
 
-    <div class="header-right-side">
-
-        <!-- BOOK NOW BUTTON -->
-        <a href="https://odrs-booking-page.vercel.app/"
-           class="book-now-btn"
-           target="_blank">
-           <i class="fa-solid fa-calendar-check"></i>
-           BOOK NOW
-        </a>
-        
-        <!-- DARK MODE -->
+    <div class="header-right-side"><!-- DARK MODE -->
         <div class="theme-switch-container">
             <label class="switch">
                 <input type="checkbox" id="dark-mode-checkbox">
@@ -73,14 +63,9 @@
             </label>
         </div>
 
-        <!-- PROFILE -->
-        <div class="profile-menu">
-            <i class="fa-solid fa-user"></i>
-            <div class="dropdown">
-                <p>UserName: <span id="userName"></span></p>
-                <p>Email: <span id="userEmail"></span></p>
-                <a href="https://odrs-company-io.vercel.app/" onclick="logout(event)">Back to Website</a>
-            </div>
+        <div class="visitor-access-label" aria-label="Public visitor access">
+            <i class="fa-solid fa-user-check"></i>
+            <span>Guest Access</span>
         </div>
 
     </div>
@@ -144,10 +129,7 @@
             </div>
 
             
-        <a href="https://odrs-company-io.vercel.app/" class="logout-btn" onclick="logout(event)">
-            <i class="fa-solid fa-right-from-bracket"></i>
-            Logout
-        </a>
+        <div class="visitor-note"><i class="fa-solid fa-circle-check"></i> You are browsing as a guest</div>
     </div>
 </div>
     <!-- Close left-panel -->
@@ -379,19 +361,13 @@
 </div>
 
 <script>
-/* Public visitor access: no sign-in is required to view ODRS offers. */
-const visitorName = localStorage.getItem("username") || "Guest";
-const visitorEmail = localStorage.getItem("email") || "Public visitor";
-
+/* Public visitor access: no sign-in, sign-out, or redirect actions. */
+const visitorName = "Guest";
+const visitorEmail = "Public visitor";
 document.getElementById("userName").textContent = visitorName;
 document.getElementById("userEmail").textContent = visitorEmail;
 document.getElementById("sidebarUserName").textContent = visitorName;
 document.getElementById("sidebarUserEmail").textContent = visitorEmail;
-
-window.logout = function(event) {
-  if (event) event.preventDefault();
-  window.location.href = "https://odrs-company-io.vercel.app/";
-};
 </script>
 
 <script>
@@ -464,103 +440,9 @@ if (mobileToggle) {
 }
 </script>
     
-<script>
-  const profileMenu = document.querySelector('.profile-menu');
-  const profileDropdown = document.querySelector('.dropdown');
 
-  profileMenu.addEventListener('click', (event) => {
-    // If the user clicks inside the open white box (like trying to copy their email), don't close it!
-    if (profileDropdown.contains(event.target)) return;
 
-    event.stopPropagation(); // Stops the click from instantly hitting the window trap below
-    profileDropdown.classList.toggle('show');
-  });
 
-  // THE WINDOW TRAP: If they click anywhere else on the background, shut the box.
-  window.addEventListener('click', () => {
-    profileDropdown.classList.remove('show');
-  });
-</script>
-
-<!-- Warning Popup -->
-<div id="warningPopup" class="warning-popup">
-    <div class="warning-box">
-        <div class="warning-icon">⚠️</div>
-        <h2>ODRS SECURITY WARNING</h2>
-        <p>Unauthorized inspection or source viewing is not allowed.</p>
-        <button onclick="closeWarning()">OK</button>
-    </div>
-</div>
-
-<style>
-.warning-popup{
-    display:none;
-    position:fixed;
-    top:0;
-    left:0;
-    width:100%;
-    height:100%;
-    background:rgba(0,0,0,0.7);
-    justify-content:center;
-    align-items:center;
-    z-index:99999;
-}
-.warning-box{
-    background:#fff;
-    padding:25px;
-    border-radius:15px;
-    text-align:center;
-    width:350px;
-    box-shadow:0 0 25px rgba(0,0,0,0.3);
-}
-.warning-icon{
-    font-size:60px;
-}
-.warning-box h2{
-    color:#e53935;
-    margin:10px 0;
-}
-.warning-box p{
-    color:#555;
-}
-.warning-box button{
-    margin-top:15px;
-    padding:10px 20px;
-    border:none;
-    border-radius:8px;
-    background:#e53935;
-    color:white;
-    cursor:pointer;
-}
-</style>
-
-<script>
-function showWarning() {
-    document.getElementById("warningPopup").style.display = "flex";
-}
-
-function closeWarning() {
-    document.getElementById("warningPopup").style.display = "none";
-}
-
-// Right Click
-document.addEventListener("contextmenu", function(e) {
-    e.preventDefault();
-    showWarning();
-});
-
-// Keyboard Shortcuts
-document.addEventListener("keydown", function(e) {
-    if (
-        e.key === "F12" ||
-        (e.ctrlKey && e.shiftKey && ["I", "J", "C"].includes(e.key.toUpperCase())) ||
-        (e.ctrlKey && e.key.toUpperCase() === "U")
-    ) {
-        e.preventDefault();
-        showWarning();
-    }
-});
-</script>
 
 <script>
 document.querySelectorAll('.flip-card').forEach(card => {
