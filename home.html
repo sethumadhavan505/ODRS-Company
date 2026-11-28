@@ -379,7 +379,12 @@ document.getElementById("sidebarUserEmail").textContent = visitorEmail;
 
 function goToLandingPage(event) {
     if (event) event.preventDefault();
-    window.location.href = "https://odrs-company-io.vercel.app/";
+
+    // Clear the saved visitor/account identity, but keep the theme preference.
+    localStorage.removeItem("username");
+    localStorage.removeItem("email");
+
+    window.location.replace("https://odrs-company-io.vercel.app/");
     return false;
 }
 </script>
