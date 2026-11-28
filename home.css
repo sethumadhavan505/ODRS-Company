@@ -1377,3 +1377,57 @@ body.dark-mode .theme-switch-container {
 @media (max-width: 768px) {
     .visitor-access-label { display: none; }
 }
+
+ 
+/* HEADER PROFILE ICON - RINGED LIGHT/DARK THEME */
+.header-right-side .profile-menu {
+    width: 42px;
+    height: 42px;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid #cbd5e1;
+    border-radius: 50%;
+    background: #f8fafc;
+    color: #172033;
+    cursor: pointer;
+    font-size: 19px;
+    box-shadow: 0 2px 7px rgba(15, 23, 42, 0.12);
+    transition: background-color .25s ease, color .25s ease,
+                border-color .25s ease, box-shadow .25s ease,
+                transform .25s ease;
+}
+
+.header-right-side .profile-menu:hover,
+.header-right-side .profile-menu:focus-visible {
+    border-color: #0ea5e9;
+    box-shadow: 0 0 0 4px rgba(14, 165, 233, .15);
+    outline: none;
+}
+
+.header-right-side .profile-menu:active {
+    transform: scale(.96);
+}
+
+/* Match the profile ring and icon to the active dark theme */
+body.dark-mode .header-right-side .profile-menu {
+    background: #0f172a;
+    color: #e2e8f0;
+    border-color: #64748b;
+    box-shadow: 0 2px 9px rgba(0, 0, 0, .35);
+}
+
+body.dark-mode .header-right-side .profile-menu:hover,
+body.dark-mode .header-right-side .profile-menu:focus-visible {
+    border-color: #38bdf8;
+    color: #38bdf8;
+    box-shadow: 0 0 0 4px rgba(56, 189, 248, .18);
+}
+
+/* Keep the account icon visible on small screens when the header is shown */
+@media (max-width: 768px) {
+    .header-right-side .profile-menu {
+        display: flex;
+    }
+}
